@@ -2,8 +2,9 @@ class QuadraticEquation
   attr_reader :first_root, :second_root
   attr_accessor :a, :b, :c
 
-  def initialize(a, b, c)
-    @a, @b, @c = a, b, c
+  def initialize(*args)
+    validate(args)
+    @a, @b, @c = args
   end
 
   def solve
@@ -14,6 +15,13 @@ class QuadraticEquation
   end
 
   private
+    def validate(args)
+      raise ArgumentError, 'Invalid number of arguments.' unless args.count === 3
+      args.each do |argument|
+        raise ArgumentError, 'All coefficients must be numerical.' unless argument.is_a? Numeric
+      end
+    end
+
     def find_roots(outer, inner, denominator)
       @first_root = plus_route(outer, inner, denominator)
       @second_root = minus_route(outer, inner, denominator)
