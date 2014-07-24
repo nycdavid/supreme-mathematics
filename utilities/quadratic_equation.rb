@@ -1,5 +1,5 @@
 class QuadraticEquation
-  attr_accessor :first_root, :second_root
+  attr_accessor :first_root, :second_root, :a, :b, :c
 
   def initialize(a, b, c)
     @a, @b, @c = a, b, c
