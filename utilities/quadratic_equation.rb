@@ -1,9 +1,9 @@
 class QuadraticEquation
-  attr_accessor :first_root, :second_root, :a, :b, :c
+  attr_reader :first_root, :second_root
+  attr_accessor :a, :b, :c
 
   def initialize(a, b, c)
     @a, @b, @c = a, b, c
-    solve
   end
 
   def solve
