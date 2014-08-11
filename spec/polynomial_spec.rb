@@ -46,8 +46,43 @@ describe Polynomial, 'correctly identify components of an element' do
       @element = @polynomial.elements[1]
     end
 
-    it 'should properly indentify the coefficient' do
+    it 'should properly identify the coefficient' do
       expect(@element[:coefficient]).to eq(-5)
     end
+    
+    it 'should properly identify the exponent' do
+      expect(@element[:exponent]).to eq(1)
+    end
+  end
+
+  describe 'constant element' do
+    before :each do
+      @element = @polynomial.elements[2]
+    end
+
+    it 'should id the coefficient of the constant' do
+      expect(@element[:coefficient]).to eq(3)
+    end
+
+    it 'should id the exponent of the constant' do
+      expect(@element[:exponent]).to eq(0)
+    end
+  end
+end
+
+describe Polynomial, 'polynomial 1' do
+  before :each do
+    @polynomial = Polynomial.new('-x^2 + 5x - 3')
+    @elements = @polynomial.elements
+  end
+
+  it 'should count elements correctly' do
+    expect(@elements.count).to eq(3)
+  end
+
+  it 'should properly parse' do
+    expect(@elements[0][:coefficient]).to eq(-1)
+    expect(@elements[1][:coefficient]).to eq(5)
+    expect(@elements[2][:coefficient]).to eq(-3)
   end
 end
