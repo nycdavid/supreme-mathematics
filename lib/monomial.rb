@@ -1,9 +1,14 @@
 require 'pry'
 
-class Nomial
-  NOMIAL_REGEX = Regexp.new('\A(-?\d*)[A-Za-z]?\^?(\d*)\z')
+class Monomial
+  MONOMIAL_REGEX = Regexp.new('\A(-?\d*)[A-Za-z]?\^?(\d*)\z')
 
   attr_reader :coefficient, :exponent
+
+  MAP = {
+    '-' => -1,
+    '' => 1
+  }
 
   def initialize(string)
     @input_string = string
@@ -12,13 +17,10 @@ class Nomial
 
   private
     def parse_for_coefficient_and_exponent
-      match = NOMIAL_REGEX.match @input_string
+      match = MONOMIAL_REGEX.match @input_string
       @coefficient, @exponent = match.captures.map do |capture|
-        is_zero?(capture.to_i) ? 1 : capture.to_i
+        (capture === '-' || capture === '') ? MAP[capture] : capture.to_i
       end
     end
 
-    def is_zero?(capture)
-      capture === 0
-    end
 end
