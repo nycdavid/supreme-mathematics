@@ -42,4 +42,18 @@ describe Monomial, 'basic parsing' do
     expect(@monomial.coefficient).to eq(-1)
     expect(@monomial.exponent).to eq(1)
   end
+
+  it 'should parse a monomial with no exponent and no coefficient' do
+    input_string = '3'
+    @monomial = Monomial.new(input_string)
+    expect(@monomial.coefficient).to eq(3)
+    expect(@monomial.exponent).to eq(0)
+  end
+
+  it 'should parse a monomial with no exponent and no coefficient' do
+    input_string = '-3'
+    @monomial = Monomial.new(input_string)
+    expect(@monomial.coefficient).to eq(-3)
+    expect(@monomial.exponent).to eq(0)
+  end
 end
