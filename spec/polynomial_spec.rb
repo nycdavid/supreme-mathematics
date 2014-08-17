@@ -47,19 +47,44 @@ describe Polynomial, 'parsing polynomials of > 2 elements' do
   describe 'properly parsing coefficients and exponents' do
     before :all do
       @input_string = '2x^2 - 4x + 6'
+      @polynomial = Polynomial.new(@input_string)
     end
 
     it 'should parse the parts of element 1' do
-      @polynomial = Polynomial.new(@input_string)
-
       expect(@polynomial.elements[0].coefficient).to eq(2)
       expect(@polynomial.elements[0].exponent).to eq(2)
+    end
 
+    it 'should parse the parts of element 2' do
       expect(@polynomial.elements[1].coefficient).to eq(-4)
       expect(@polynomial.elements[1].exponent).to eq(1)
+    end
 
+    it 'should parse the parts of element 3' do
       expect(@polynomial.elements[2].coefficient).to eq(6)
       expect(@polynomial.elements[2].exponent).to eq(0)
     end
+  end
+end
+
+describe Polynomial, 'parsing polynomials regardless of whitespace' do
+  before :all do
+    @input_string = '2x^2-4x+6'
+    @polynomial = Polynomial.new(@input_string)
+  end
+
+  it 'should parse the parts of element 1' do
+    expect(@polynomial.elements[0].coefficient).to eq(2)
+    expect(@polynomial.elements[0].exponent).to eq(2)
+  end
+  
+  it 'should parse the parts of element 2' do
+    expect(@polynomial.elements[1].coefficient).to eq(-4)
+    expect(@polynomial.elements[1].exponent).to eq(1)
+  end
+  
+  it 'should parse the parts of element 3' do
+    expect(@polynomial.elements[2].coefficient).to eq(6)
+    expect(@polynomial.elements[2].exponent).to eq(0)
   end
 end

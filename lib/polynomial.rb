@@ -17,7 +17,7 @@ class Polynomial
 
   def initialize(string)
     @input_string = string
-    @regex = Regexp.new(construct_regex(@input_string.scan(/-?\d*[A-Za-z]?\^?\d*\s+[\+-]\s+-?\d*[A-Za-z]?\^?\d*/).count))
+    @regex = Regexp.new(construct_regex(@input_string.scan(/-?\d*[A-Za-z]?\^?\d*\s?[\+-]\s?-?\d*[A-Za-z]?\^?\d*/).count))
     parse_for_elements
   end
 
