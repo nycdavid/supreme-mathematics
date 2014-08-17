@@ -1,7 +1,10 @@
 require_relative './monomial'
+require_relative './calculus'
 require 'pry'
 
 class Polynomial
+  include Calculus
+
   attr_reader :elements
 
   POLYNOMIAL_REGEX = Regexp.new('\A(-?\d*[A-Za-z]?\^?\d*)\s?([\+-]?\s?-?\d*[A-Za-z]?\^?\d*)\z')
