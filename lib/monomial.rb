@@ -3,7 +3,7 @@ require 'pry'
 class Monomial
   MONOMIAL_REGEX = Regexp.new('\A(-?\d*)([A-Za-z]?\^?\d*)\z')
 
-  attr_reader :coefficient, :exponent
+  attr_accessor :coefficient, :exponent
 
   def initialize(string)
     @input_string = string
