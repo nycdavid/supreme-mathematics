@@ -30,8 +30,7 @@ describe Polynomial, 'parsing binomials' do
     expect(@polynomial.elements[1].exponent).to eq(0)
   end
 
-  it 'should properly parse exponent & coefficient in expression without whitespace' do
-  end
+  it 'should properly parse exponent & coefficient in expression without whitespace'
 end
 
 describe Polynomial, 'parsing polynomials of > 2 elements' do
