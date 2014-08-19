@@ -1,8 +1,9 @@
 require_relative './monomial'
 require_relative './calculus'
+require_relative './function'
 require 'pry'
 
-class Polynomial
+class Polynomial < Function
   include Calculus
 
   attr_reader :elements
