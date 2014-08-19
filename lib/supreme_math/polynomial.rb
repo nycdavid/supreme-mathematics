@@ -22,12 +22,16 @@ module SupremeMath
       def parse_for_elements
         match = @regex.match @input_string
         @elements = match.captures.map do |element|
-          Monomial.new(remove_whitespace(element))
+          Monomial.new(remove_plus_sign(remove_whitespace(element)))
         end
       end
 
       def remove_whitespace(element)
-        element = element.gsub(/\s+/, '').gsub('+', '')
+        element.gsub(/\s+/, '')
+      end
+
+      def remove_plus_sign(element)
+        element.gsub("+", "")
       end
 
       def construct_regex(count)
