@@ -13,10 +13,10 @@ module SupremeMath
     end
 
     def numerically_evaluate
-      solution = elements.map do |element|
-        element.coefficient * (@indep_var**element.exponent)
+      return elements.inject 0 do |memo, ele|
+        memo += ele.coefficient * (@indep_var**ele.exponent)
+        memo
       end
-      solution.inject(:+)
     end
 
     def algebraically_evaluate
