@@ -22,6 +22,7 @@ end
 
 describe SupremeMath::Function, 'abstract/algebraic function evaluation' do
   it 'should insert algebraic expressions in place of x in a function' do
+    pending
     @polynomial = SupremeMath::Polynomial.new('x^2 + 3')
     result = @polynomial.evaluate('x + 2')
     expect(result).to be_a SupremeMath::Polynomial
