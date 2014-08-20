@@ -1,12 +1,12 @@
-require_relative '../lib/polynomial' 
+require "spec_helper"
 
-describe Polynomial, 'calculus operations' do
+describe SupremeMath::Polynomial, 'calculus operations' do
   before :all do
     @input_string = '4x^2 - 6x + 3'
   end
 
   it 'should properly calculate the coefficient and exponent of element 1' do
-    @polynomial = Polynomial.new @input_string
+    @polynomial = SupremeMath::Polynomial.new @input_string
     @polynomial.derivative
 
     expect(@polynomial.elements[0].coefficient).to eq(8)
