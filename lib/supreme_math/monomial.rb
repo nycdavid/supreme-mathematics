@@ -4,16 +4,14 @@ module SupremeMath
 
     attr_accessor :coefficient, :exponent
 
-    def initialize(string)
-      @input_string = string
-      parse_for_coefficient_and_exponent
+    def initialize(str)
+      @coefficient, @exponent = parse_for_coefficient_and_exponent(str)
     end
 
     private
-      def parse_for_coefficient_and_exponent
-        match = MONOMIAL_REGEX.match @input_string
-        @coefficient = get_coefficient(match.captures[0])
-        @exponent = get_exponent(match.captures[1])
+      def parse_for_coefficient_and_exponent(str)
+        match = MONOMIAL_REGEX.match str
+        return get_coefficient(match.captures[0]), get_exponent(match.captures[1])
       end
 
       def get_coefficient(match)
