@@ -12,16 +12,16 @@ module SupremeMath
     DELIMITER = '\s?([\+-]?\s?'
     FOOTER = '\z'
 
-    def initialize(string)
-      @input_string = string
-      @regex = Regexp.new(construct_regex(@input_string.scan(/-?\d*[A-Za-z]?\^?\d*\s?[\+-]\s?-?\d*[A-Za-z]?\^?\d*/).count))
-      parse_for_elements
+    def initialize(str)
+      reg = Regexp.new(construct_regex(str.scan(/-?\d*[A-Za-z]?\^?\d*\s?[\+-]\s?-?\d*[A-Za-z]?\^?\d*/).count))
+      @elements = parse_for_elements reg, str
     end
 
     private
-      def parse_for_elements
-        match = @regex.match @input_string
-        @elements = match.captures.map do |element|
+      def parse_for_elements(reg, str)
+        match = reg.match str
+
+        return match.captures.map do |element|
           Monomial.new(remove_plus_sign(remove_whitespace(element)))
         end
       end
