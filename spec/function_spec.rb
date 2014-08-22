@@ -20,6 +20,19 @@ describe SupremeMath::Function, 'function evaluation with a numeric value' do
   end
 end
 
+describe SupremeMath::Function, 'simplifying a function' do
+  it 'should present a string representation of the function' do
+    @polynomial = SupremeMath::Polynomial.new('x^2 + 2')
+    expect(@polynomial.expression_string.read).to eq('x^2 + 2')
+  end
+
+  it 'should combine like terms' do
+    pending
+    fail
+    @polynomial = SupremeMath::Polynomial.new('x^2 + x^2')
+  end
+end
+
 describe SupremeMath::Function, 'abstract/algebraic function evaluation' do
   it 'should insert algebraic expressions in place of x in a function' do
     pending

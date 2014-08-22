@@ -17,6 +17,10 @@ module SupremeMath
       @elements = parse_for_elements reg, str
     end
 
+    def expression_string
+      ExpressionString.new(@elements)
+    end
+
     private
       def parse_for_elements(reg, str)
         match = reg.match str
