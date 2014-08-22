@@ -23,7 +23,7 @@ end
 describe SupremeMath::Function, 'simplifying a function' do
   it 'should present a string representation of the function' do
     @polynomial = SupremeMath::Polynomial.new('x^2 + 2')
-    expect(@polynomial.expression_string.read).to eq('x^2 + 2')
+    expect(@polynomial.to_string).to eq('x^2 + 2')
   end
 
   it 'should combine like terms' do

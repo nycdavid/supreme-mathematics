@@ -18,7 +18,11 @@ module SupremeMath
     end
 
     def expression_string
-      ExpressionString.new(@elements)
+      @expression_string ||= ExpressionString.new(@elements)
+    end
+
+    def to_string
+      @elements.map { |monomial| monomial.to_string }.join
     end
 
     private

@@ -57,3 +57,17 @@ describe SupremeMath::Monomial, 'basic parsing' do
     expect(@monomial.exponent).to eq(0)
   end
 end
+
+describe SupremeMath::Monomial, 'storing the base' do
+  it 'should have a base attribute' do
+    @monomial = SupremeMath::Monomial.new('x^2')
+
+    expect(@monomial.base).to be_a String
+  end
+
+  it 'should store the base of monomial' do
+    @monomial = SupremeMath::Monomial.new('x^2')
+  
+    expect(@monomial.base).to eq('x^2')
+  end
+end

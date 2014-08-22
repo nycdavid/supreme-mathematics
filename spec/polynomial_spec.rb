@@ -66,6 +66,25 @@ describe SupremeMath::Polynomial, 'parsing polynomials of > 2 elements' do
   end
 end
 
+describe SupremeMath::Polynomial, 'properly storing the base' do
+  before :all do
+    @input_string = '2x^2 - 4x + 6'
+    @polynomial = SupremeMath::Polynomial.new(@input_string)
+  end
+
+  it 'should store the base of element 1' do
+    expect(@polynomial.elements[0].base).to eq('x^2')
+  end
+
+  it 'should store the base of element 2' do
+    expect(@polynomial.elements[1].base).to eq('x')
+  end
+
+  it 'should store the base of element 3' do
+    expect(@polynomial.elements[2].base).to be_nil
+  end
+end
+
 describe SupremeMath::Polynomial, 'parsing polynomials regardless of whitespace' do
   before :all do
     @input_string = '2x^2-4x+6'
@@ -85,5 +104,34 @@ describe SupremeMath::Polynomial, 'parsing polynomials regardless of whitespace'
   it 'should parse the parts of element 3' do
     expect(@polynomial.elements[2].coefficient).to eq(6)
     expect(@polynomial.elements[2].exponent).to eq(0)
+  end
+end
+
+describe SupremeMath::Polynomial, '#to_string' do
+  it 'should return a string representation of the polynomial' do
+    @polynomial = SupremeMath::Polynomial.new('x^2 - 4x + 3')
+
+    expect(@polynomial.to_string).to eq('x^2 - 4x + 3')
+  end
+  
+  it 'should take Polynomial class elements as input' do
+    @polynomial = SupremeMath::Polynomial.new('x^2')
+    @expression_string = @polynomial.to_string
+
+    expect(@expression_string).to eq('x^2')
+  end
+
+  it 'should convert a Polynomial (multiple elements)' do
+    @polynomial = SupremeMath::Polynomial.new('x^2 + 4')
+    @expression_string = @polynomial.to_string
+
+    expect(@expression_string).to eq('x^2 + 4')
+  end
+
+  it 'should accommodate negative coefficients' do
+    @polynomial = SupremeMath::Polynomial.new('-x^2')
+    @expression_string = @polynomial.to_string
+
+    expect(@expression_string).to eq('-x^2')
   end
 end
