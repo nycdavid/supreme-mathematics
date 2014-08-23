@@ -4,11 +4,9 @@ module SupremeMath
 
     attr_reader :elements
 
-    POLYNOMIAL_REGEX = Regexp.new('\A(-?\d*[A-Za-z]?\^?\d*)\s?([\+-]?\s?-?\d*[A-Za-z]?\^?\d*)\z')
-
     HEADER = '\A'
-    FIRST_REGEX = '(-?\d*[A-Za-z]?\^?\d*)'
-    REGEX = '-?\d*[A-Za-z]?\^?\d*)'
+    FIRST_REGEX = '(-?\d*\.?\d*[A-Za-z]?\^?\d*)'
+    REGEX = '-?\d*\.?\d*[A-Za-z]?\^?\d*)'
     DELIMITER = '\s?([\+-]?\s?'
     FOOTER = '\z'
 

@@ -1,5 +1,11 @@
 require "spec_helper"
 
+describe SupremeMath::Monomial, 'input validations' do
+  it 'should not accept negative exponents' do
+    expect { SupremeMath::Monomial.new('x^-2') }.to raise_error('Invalid value for exponent. Must be non-negative/an integer.')
+  end
+end
+
 describe SupremeMath::Monomial, 'basic parsing' do
   it 'should parse regular mononomial' do
     input_string = '5x^3'
