@@ -16,10 +16,6 @@ module SupremeMath
       @elements = parse_for_elements reg, str
     end
 
-    def expression_string
-      @expression_string ||= ExpressionString.new(@elements)
-    end
-
     def to_string
       @elements.map { |monomial| monomial.to_string }.join
     end
