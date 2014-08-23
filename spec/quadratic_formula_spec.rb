@@ -4,6 +4,9 @@ describe SupremeMath::QuadraticFormula, 'validating' do
   it 'should raise an error if the calling polynomial is not a quadratic' do
     @polynomial = SupremeMath::Polynomial.new('x^3 + 3x^2')
     expect { @polynomial.roots }.to raise_error(ArgumentError, 'Polynomial must be a quadratic.')
+    expect { @polynomial.a }.to raise_error(ArgumentError, 'Polynomial must be a quadratic.')
+    expect { @polynomial.b }.to raise_error(ArgumentError, 'Polynomial must be a quadratic.')
+    expect { @polynomial.c }.to raise_error(ArgumentError, 'Polynomial must be a quadratic.')
   end
 end
 

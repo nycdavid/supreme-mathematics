@@ -1,5 +1,6 @@
 module SupremeMath
   module QuadraticFormula
+
     def roots
       valid?
       @roots ||= calculate_roots
