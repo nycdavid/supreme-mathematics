@@ -42,3 +42,31 @@ describe SupremeMath::Function, 'abstract/algebraic function evaluation' do
     expect(result).to eq('(x + 2)^2 + 3')
   end
 end
+
+describe SupremeMath::Function, '#quadratic?' do
+  it 'should return true for degree 2' do
+    @polynomial = SupremeMath::Polynomial.new('x^2 + 2x')
+
+    expect(@polynomial.quadratic?).to be true
+  end
+
+  it 'should return false for degree != 2' do
+    @polynomial = SupremeMath::Polynomial.new('x^3 + 3x^2')
+
+    expect(@polynomial.quadratic?).to be false
+  end
+end
+
+describe SupremeMath::Function, '#linear?' do
+  it 'should return true for degree 1' do
+    @polynomial = SupremeMath::Polynomial.new('2x + 1')
+
+    expect(@polynomial.linear?).to be true  
+  end
+
+  it 'should return false for degree != 1' do
+    @polynomial = SupremeMath::Polynomial.new('2x^2 + 4x + 2')
+
+    expect(@polynomial.linear?).to be false
+  end
+end
