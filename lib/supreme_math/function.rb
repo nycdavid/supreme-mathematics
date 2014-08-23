@@ -21,12 +21,17 @@ module SupremeMath
     def algebraically_evaluate
     end
 
+    def linear?
+      degree === 1
+    end
+    
     def quadratic?
       degree === 2
     end
 
-    def linear?
-      degree === 1
+    def cubic?
+      degree === 3
     end
+
   end
 end

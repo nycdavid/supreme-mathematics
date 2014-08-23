@@ -70,3 +70,17 @@ describe SupremeMath::Function, '#linear?' do
     expect(@polynomial.linear?).to be false
   end
 end
+
+describe SupremeMath::Function, '#cubic?' do
+  it 'should return true for degree 3' do
+    @polynomial = SupremeMath::Polynomial.new('3x^3 + 2x^2')
+
+    expect(@polynomial.cubic?).to be true
+  end
+
+  it 'should return false for degree != 3' do
+    @polynomial = SupremeMath::Polynomial.new('3x^7 + 2x^3 + 4x')
+
+    expect(@polynomial.cubic?).to be false
+  end
+end
