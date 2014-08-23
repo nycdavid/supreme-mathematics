@@ -33,6 +33,18 @@ describe SupremeMath::Polynomial, 'parsing binomials' do
   it 'should properly parse exponent & coefficient in expression without whitespace'
 end
 
+describe SupremeMath::Polynomial, 'parsing decimal coefficients' do
+  before :all do 
+    @polynomial = SupremeMath::Polynomial.new('-4.90t^2 + 0.96t + 449.36')
+  end
+
+  it 'should account for decimal/float coefficients' do
+    expect(@polynomial.elements[0].coefficient).to eq(-4.90)
+    expect(@polynomial.elements[1].coefficient).to eq(0.96)
+    expect(@polynomial.elements[2].coefficient).to eq(449.36)
+  end
+end
+
 describe SupremeMath::Polynomial, 'parsing polynomials of > 2 elements' do
   before :all do
     @input_string = '2x^2 - 4x + 6'

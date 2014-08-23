@@ -1,6 +1,6 @@
 module SupremeMath
   class Monomial
-    MONOMIAL_REGEX = Regexp.new('\A(-?\d*)([A-Za-z]?\^?\d*)\z')
+    MONOMIAL_REGEX = Regexp.new('\A(-?\d*\.?\d*)([A-Za-z]?\^?-?\d*)\z')
 
     attr_accessor :coefficient, :exponent, :base
 
@@ -13,7 +13,10 @@ module SupremeMath
     end
 
     private
-      
+      def to_numeric(coefficient)
+        n = BigDecimal.new(coefficient)
+        n.frac == 0 ? coefficient.to_i : coefficient.to_f
+      end
 
       def coeff_convert(coefficient)
         case 
@@ -40,7 +43,7 @@ module SupremeMath
         when ''
           1
         else
-          match.to_i
+          to_numeric(match)
         end
       end
 
@@ -54,7 +57,10 @@ module SupremeMath
         when /\A([A-Za-z]\^(\d))\z/
           @base = $1
           $2.to_i
+        else
+          raise ArgumentError, 'Invalid value for exponent. Must be non-negative/an integer.'
         end
       end
+
   end
 end
