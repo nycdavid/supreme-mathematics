@@ -3,7 +3,7 @@ require 'spec_helper'
 describe SupremeMath::QuadraticFormula, 'validating' do
   it 'should raise an error if the calling polynomial is not a quadratic' do
     @polynomial = SupremeMath::Polynomial.new('x^3 + 3x^2')
-    expect { @polynomial.calculate_roots }.to raise_error(ArgumentError, 'Polynomial must be a quadratic.')
+    expect { @polynomial.roots }.to raise_error(ArgumentError, 'Polynomial must be a quadratic.')
   end
 end
 
@@ -17,5 +17,8 @@ describe SupremeMath::QuadraticFormula, 'parsing a, b and c' do
     expect(@polynomial.b).to eq(0.96)
     expect(@polynomial.c).to eq(449.36)
   end
-end
 
+  it 'should solve for the roots' do
+    expect(@polynomial.roots.map { |root| root.round(2) }).to eq([-9.48, 9.67])
+  end
+end

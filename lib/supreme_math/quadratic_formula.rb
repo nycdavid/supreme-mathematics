@@ -1,27 +1,36 @@
 module SupremeMath
   module QuadraticFormula
-    def calculate_roots
+    def roots
       valid?
+      @roots ||= calculate_roots
+      
     end
 
     def a
       valid?
-      elements.max_by { |el| el.exponent }.coefficient
+      @a ||= elements.max_by { |el| el.exponent }.coefficient
     end
 
     def b
       valid?
-      elements.sort_by { |el| el.exponent }[1].coefficient
+      @b ||= elements.sort_by { |el| el.exponent }[1].coefficient
     end
 
     def c
       valid?
-      elements.min_by { |el| el.exponent }.coefficient
+      @c ||= elements.min_by { |el| el.exponent }.coefficient
     end
 
     private
       def valid?
         raise(ArgumentError, 'Polynomial must be a quadratic.') unless quadratic?
+      end
+
+      def calculate_roots
+        [
+          (-b + Math.sqrt(b**2 - 4*a*c)) / (2*a), 
+          (-b - Math.sqrt(b**2 - 4*a*c)) / (2*a)
+        ]
       end
   end
 end
