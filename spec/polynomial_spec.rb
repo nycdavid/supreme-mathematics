@@ -135,3 +135,17 @@ describe SupremeMath::Polynomial, '#to_string' do
     expect(@expression_string).to eq('-x^2')
   end
 end
+
+describe SupremeMath::Polynomial, '#degree' do
+  it 'should return an integer' do
+    @polynomial = SupremeMath::Polynomial.new('-x^2')
+
+    expect(@polynomial.degree).to be_a Integer
+  end
+
+  it 'should return the highest exponent as the degree' do
+    @polynomial = SupremeMath::Polynomial.new('x^7 + 2x^6 + x^3 + 4')
+
+    expect(@polynomial.degree).to eq(7)
+  end
+end

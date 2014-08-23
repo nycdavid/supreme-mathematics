@@ -25,6 +25,10 @@ module SupremeMath
       @elements.map { |monomial| monomial.to_string }.join
     end
 
+    def degree
+      @degree ||= @elements.map { |el| el.exponent }.max
+    end
+
     private
       def parse_for_elements(reg, str)
         match = reg.match str
