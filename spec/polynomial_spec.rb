@@ -32,8 +32,11 @@ describe SupremeMath::Polynomial, 'parsing binomials' do
 
   it 'should properly parse exponent & coefficient in expression without whitespace' do
     @input_string.gsub!(/\s+/, '')
+
+    expect(@input_string).to eq('-5x+3')
+
     @polynomial = SupremeMath::Polynomial.new(@input_string)
-    
+
     expect(@polynomial.elements[0].coefficient).to eq(-5)
     expect(@polynomial.elements[0].exponent).to eq(1)
 
