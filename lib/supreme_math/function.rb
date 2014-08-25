@@ -1,5 +1,6 @@
 module SupremeMath
   class Function
+
     include SupremeMath::Parsing
     # A function f is a rule that assigns to each element x in a set D
     # exactly one element, called f(x) in a set E

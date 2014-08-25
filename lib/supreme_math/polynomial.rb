@@ -1,5 +1,6 @@
 module SupremeMath
   class Polynomial < Function
+    
     include Calculus
     include QuadraticFormula
 

@@ -84,5 +84,6 @@ module SupremeMath
       regex_array = regex_array.join(DELIMITER)
       HEADER + regex_array + FOOTER
     end
+
   end
 end
