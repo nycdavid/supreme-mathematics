@@ -1,6 +1,6 @@
 module SupremeMath
   class Monomial
-    MONOMIAL_REGEX = Regexp.new('\A(-?\d*\.?\d*)([A-Za-z]?\^?-?\d*)\z')
+    MONOMIAL_REGEX = Regexp.new('\A(-?\d*\.?\d*)([A-Za-z]?\^?-?\d*\/?\d*)\z')
 
     attr_accessor :coefficient, :exponent, :base
 

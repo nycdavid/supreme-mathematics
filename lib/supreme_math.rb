@@ -8,6 +8,7 @@ require "supreme_math/calculus"
 require "supreme_math/function"
 require "supreme_math/polynomial"
 require "supreme_math/monomial"
+require 'supreme_math/power_function'
 
 module SupremeMath; end
 
