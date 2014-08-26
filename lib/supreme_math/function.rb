@@ -1,9 +1,16 @@
 module SupremeMath
   class Function
 
+    attr_reader :operator_count
+
     include SupremeMath::Parsing
     # A function f is a rule that assigns to each element x in a set D
     # exactly one element, called f(x) in a set E
+    
+    def initialize(input)
+      @input = input
+      parse
+    end
 
     def evaluate(independent_var)
       if independent_var.is_a? String
