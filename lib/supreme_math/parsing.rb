@@ -11,6 +11,7 @@ module SupremeMath
       end
 
       def to_numeric(coefficient)
+        coefficient = coefficient.gsub(/\s+/, '')
         n = BigDecimal.new(coefficient)
         n.frac == 0 ? coefficient.to_i : coefficient.to_f
       end

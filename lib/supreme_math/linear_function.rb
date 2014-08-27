@@ -7,8 +7,9 @@ module SupremeMath
 
     def initialize(input)
       matches = REGEX.match input   
+      raise ArgumentError, 'Invalid input string for LinearFunction.' if matches.nil?
       @slope = to_numeric(matches[1])
-      @y_intercept = to_numeric(matches[2].gsub(/\s+/, ''))
+      @y_intercept = to_numeric(matches[2])
     end
 
   end
