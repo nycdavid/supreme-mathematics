@@ -4,7 +4,6 @@ module SupremeMath
     attr_reader :elements
 
     include Calculus
-    include QuadraticFormula
 
     HEADER = '\A'
     FIRST_REGEX = '(-?\d*\.?\d*[A-Za-z]?\^?\d*)'
