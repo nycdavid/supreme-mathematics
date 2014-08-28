@@ -105,7 +105,7 @@ describe SupremeMath::Polynomial, 'properly storing the base' do
   end
 
   it 'should store the base of element 3' do
-    expect(@polynomial.elements[2].base).to be_nil
+    expect(@polynomial.elements[2].base).to be_empty
   end
 end
 

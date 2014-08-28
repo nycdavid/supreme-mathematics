@@ -1,11 +1,14 @@
 module SupremeMath
   class Monomial < Function
 
-    REGEX = /\A(-?\d*\.?\d*)([A-Za-z]?\^?\d*)\z/
+    REGEX = /\A(-?\d*\.?\d*)([A-Za-z]?\^?(\d*))\z/
 
     attr_accessor :coefficient, :exponent, :base
 
     def initialize(str)
+      @match = REGEX.match str
+      raise ArgumentError, 'Invalid value for exponent. Must be non-negative/an integer.' unless valid?
+      @base = @match.captures[1]
       @coefficient, @exponent = parse_for_coefficient_and_exponent(str)
     end
 
@@ -15,7 +18,7 @@ module SupremeMath
     
     private
       def valid?
-        @match.respond_to? 'captures' 
+        @match.respond_to? 'captures' and @match.captures.length === 3
       end
 
       def coeff_convert(coefficient)
@@ -32,8 +35,6 @@ module SupremeMath
       end
 
       def parse_for_coefficient_and_exponent(str)
-        @match = REGEX.match str
-        raise ArgumentError, 'Invalid value for exponent. Must be non-negative/an integer.' unless valid?
         return get_coefficient, get_exponent
       end
       
@@ -53,10 +54,8 @@ module SupremeMath
         when ''
           0
         when /\A([A-Za-z])\z/
-          @base = $1
           1
         when /\A([A-Za-z]\^(\d))\z/
-          @base = $1
           $2.to_i
         end
       end

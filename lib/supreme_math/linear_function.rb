@@ -7,7 +7,7 @@ module SupremeMath
       super
       raise ArgumentError, 'Invalid format for LinearFunction.' unless valid?
       @slope = elements.find { |el| el.base === 'x' }.coefficient
-      @y_intercept = elements.find { |el| el.base.nil? }.coefficient
+      @y_intercept = elements.find { |el| el.base.empty? }.coefficient
     end
 
     private
