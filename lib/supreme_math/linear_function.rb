@@ -10,9 +10,10 @@ module SupremeMath
       @y_intercept = elements.find { |el| el.base.nil? }.coefficient
     end
 
-    def valid?
-      degree === 1
-    end
+    private
+      def valid?
+        degree === 1
+      end
 
   end
 end
