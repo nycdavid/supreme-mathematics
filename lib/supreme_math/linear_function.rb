@@ -3,13 +3,15 @@ module SupremeMath
 
     attr_reader :slope, :y_intercept
 
-    REGEX = Regexp.new '\A(-?\d*\.?\d*)[A-Za-z]\s*([\+-]?\s*\d*\.?\d*)\z'
-
     def initialize(input)
-      matches = REGEX.match input   
-      raise ArgumentError, 'Invalid input string for LinearFunction.' if matches.nil?
-      @slope = to_numeric(matches[1])
-      @y_intercept = to_numeric(matches[2])
+      super
+      raise ArgumentError, 'Invalid format for LinearFunction.' unless valid?
+      @slope = elements.find { |el| el.base === 'x' }.coefficient
+      @y_intercept = elements.find { |el| el.base.nil? }.coefficient
+    end
+
+    def valid?
+      degree === 1
     end
 
   end
