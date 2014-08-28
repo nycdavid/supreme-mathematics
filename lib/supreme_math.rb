@@ -6,7 +6,6 @@ require 'bigdecimal'
 require 'supreme_math/quadratic_formula'
 require 'supreme_math/regex_factory'
 require "supreme_math/calculus"
-require 'supreme_math/parsing'
 
 # Classes
 require "supreme_math/function"

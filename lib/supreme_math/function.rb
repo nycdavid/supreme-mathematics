@@ -1,12 +1,10 @@
 module SupremeMath
   class Function
-
-    attr_reader :operator_count
-
-    include SupremeMath::Parsing
     # A function f is a rule that assigns to each element x in a set D
     # exactly one element, called f(x) in a set E
-    
+
+    attr_reader :operator_count
+        
     def evaluate(independent_var)
       if independent_var.is_a? String
         algebraically_evaluate
@@ -35,6 +33,12 @@ module SupremeMath
 
     def cubic?
       degree === 3
+    end
+    
+    def to_numeric(coefficient)
+      coefficient = coefficient.gsub(/\s+/, '')
+      n = BigDecimal.new(coefficient)
+      n.frac == 0 ? coefficient.to_i : coefficient.to_f
     end
 
   end
