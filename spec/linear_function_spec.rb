@@ -30,9 +30,10 @@ describe SupremeMath::LinearFunction, 'slope and intercept with decimal values' 
   end
 
   it 'should parse in any order' do
-    pending
-    fail
-    @input_string = '2.79 = 3.45x'
+    @linear_function = SupremeMath::LinearFunction.new('2.79 + 3.45x')
+
+    expect(@linear_function.slope).to eq(3.45)
+    expect(@linear_function.y_intercept).to eq(2.79)
   end
 end
 
