@@ -2,6 +2,7 @@ module SupremeMath
   class Monomial < Function
 
     REGEX = /\A(-?\d*\.?\d*)([A-Za-z]?\^?(\d*))\z/
+    @@regexes[REGEX] = self
 
     attr_accessor :coefficient, :exponent, :base
 
