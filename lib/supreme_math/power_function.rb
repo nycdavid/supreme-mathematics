@@ -1,16 +1,13 @@
 module SupremeMath
-  class PowerFunction < SupremeMath::Monomial
-    def get_exponent(match)
-      case match
-      when ''
-        0
-      when /\A([A-Za-z])\z/
-        @base = $1
-        1
-      when /\A([A-Za-z]\^(\d*\/?\d*))\z/
-        @base = $1
-        $2.to_r.to_f
-      end
+  class PowerFunction < Function
+
+    def self.new(*args, &block)
+      find_klass(args[0]).new(*args[0])
     end
+
+    def self.find_klass(input)
+      @@regexes.select { |k, v| k.match(input) }.values[0]
+    end
+
   end
 end
