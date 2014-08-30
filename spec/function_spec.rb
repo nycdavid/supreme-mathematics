@@ -1,5 +1,12 @@
 require "spec_helper"
 
+describe SupremeMath::Function, 'parse the input string and return the correct object' do
+  it 'should return a monomial' do
+    @function = SupremeMath::Function.parse('x^2')
+    expect(@function).to be_a SupremeMath::Monomial
+  end
+end
+
 describe SupremeMath::Function, 'function evaluation with a numeric value' do
   it 'should evaluate the function f(x) for a given value of x' do
     @polynomial = SupremeMath::Polynomial.new('x^2 + 3')

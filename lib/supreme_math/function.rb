@@ -4,8 +4,11 @@ module SupremeMath
     # exactly one element, called f(x) in a set E
 
     @@regexes = {}
-    attr_reader :operator_count
-        
+
+    def self.parse(input)
+      @@regexes.select { |k, v| k.match input }.values[0].new(input)
+    end
+
     def evaluate(independent_var)
       if independent_var.is_a? String
         algebraically_evaluate
@@ -43,4 +46,5 @@ module SupremeMath
     end
 
   end
+
 end
