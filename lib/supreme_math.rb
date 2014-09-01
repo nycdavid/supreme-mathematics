@@ -8,6 +8,7 @@ require "supreme_math/calculus"
 
 # Classes
 require 'supreme_math/coefficient'
+require 'supreme_math/base'
 require 'supreme_math/term'
 require "supreme_math/function"
 require "supreme_math/monomial"
