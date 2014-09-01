@@ -1,0 +1,20 @@
+c:
+  c: 'set_coefficient' 
+  b: 1
+  e: 0
+b:
+  c: 1
+  b: 'set_base'
+  e: 1
+c_b:
+  c: 'set_coefficient'
+  b: 'set_base'
+  e: 1
+b_e:
+  c: 1
+  b: 'set_base'
+  e: 'set_exponent'
+c_b_e:
+  c: 'set_coefficient'
+  b: 'set_base'
+  e: 'set_exponent'
