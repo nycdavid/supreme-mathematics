@@ -2,8 +2,8 @@ $LOAD_PATH << File.dirname(__FILE__)
 
 require 'pry'
 
+require 'yaml'
 require 'bigdecimal'
-require 'supreme_math/regex_factory'
 require "supreme_math/calculus"
 
 # Classes
