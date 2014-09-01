@@ -11,13 +11,17 @@ module SupremeMath
 
     def initialize(input)
       @input = input
-      convert
+      if @input.to_s === ''
+        @value = 1
+      else
+        convert_numeric
+      end
     end
 
-    def convert
+    def convert_numeric
       @value = @input.send(TYPES.select { |k, v| k.match @input }.values[0])
-    rescue
-      raise ArgumentError, 'Invalid format for Coefficient class.'
+      rescue
+        raise ArgumentError, 'Invalid format for Coefficient class.'
     end
 
   end

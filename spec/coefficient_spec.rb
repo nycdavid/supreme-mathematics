@@ -34,6 +34,18 @@ describe SupremeMath::Coefficient, 'negative coefficients' do
   end
 end
 
+describe SupremeMath::Coefficient, 'nil and empty string' do
+  it 'should parse nil into 1' do
+    coefficient = SupremeMath::Coefficient.new(nil)
+    expect(coefficient.value).to eq(1)
+  end
+  
+  it 'should parse empty string into 1' do
+    coefficient = SupremeMath::Coefficient.new('')
+    expect(coefficient.value).to eq(1)
+  end
+end
+
 describe SupremeMath::Coefficient, 'validation' do
   before :all do
     @invalid_types = ['3.', '7/', '/8', 'a', 'a.4']
