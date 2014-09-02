@@ -13,6 +13,8 @@ module SupremeMath
       @input = input
       if @input.to_s === ''
         @value = 1
+      elsif @input === '-'
+        @value = -1
       else
         convert_numeric
       end
