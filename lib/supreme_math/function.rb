@@ -9,6 +9,10 @@ module SupremeMath
       @@regexes.select { |k, v| k.match input }.values[0].new(input)
     end
 
+    def to_string
+      @input
+    end
+
     def evaluate(independent_var)
       if independent_var.is_a? String
         algebraically_evaluate
@@ -18,8 +22,12 @@ module SupremeMath
     end
 
     def numerically_evaluate(ivar)
-      return elements.inject 0 do |memo, ele|
-        memo += ele.coefficient * (ivar**ele.exponent)
+      return terms.inject 0 do |memo, term|
+        if term.base.value.is_a? String
+          memo += term.coefficient.value * (ivar**term.exponent.value)
+        else
+          memo += term.coefficient.value
+        end
         memo
       end
     end
