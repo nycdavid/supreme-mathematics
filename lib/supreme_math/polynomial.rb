@@ -1,7 +1,7 @@
 module SupremeMath
   class Polynomial < Function
 
-    attr_reader :elements
+    attr_reader :terms, :input
 
     include Calculus
 
@@ -12,19 +12,21 @@ module SupremeMath
     FOOTER = '\z'
 
     def initialize(str)
+      @input = str
       reg = Regexp.new(construct_regex(str.scan(/-?\d*[A-Za-z]?\^?\d*\s?[\+-]\s?-?\d*[A-Za-z]?\^?\d*/).count))
-      @elements = parse_for_elements reg, str
-    end
-
-    def to_string
-      @elements.map { |monomial| monomial.to_string }.join
+      @terms = parse_for_elements reg, str
+      raise ArgumentError, 'Invalid format for Polynomial.' unless valid?
     end
 
     def degree
-      @degree ||= @elements.map { |el| el.exponent }.max
+      @degree ||= @terms.map { |term| term.exponent.value }.max
     end
     
     private 
+      def valid?
+        @terms.find { |term| term.exponent.value < 0 }.nil? or @terms.find { |term| term.exponent.value.integer? == false }.nil?
+      end
+    
       def remove_whitespace(element)
         element.gsub(/\s+/, '')
       end
@@ -36,8 +38,8 @@ module SupremeMath
       def parse_for_elements(reg, str)
         match = reg.match str
 
-        return match.captures.map do |element|
-          Monomial.new(remove_plus_sign(remove_whitespace(element)))
+        return match.captures.map do |term|
+          Term.new(remove_plus_sign(remove_whitespace(term)))
         end
       end
       

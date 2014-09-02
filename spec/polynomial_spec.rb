@@ -7,27 +7,27 @@ describe SupremeMath::Polynomial, 'parsing binomials' do
 
   it 'should properly parse the number of elements of a binomial' do
     @polynomial = SupremeMath::Polynomial.new(@input_string)
-    expect(@polynomial.elements.count).to eq(2)
+    expect(@polynomial.terms.count).to eq(2)
   end
 
   it 'should instantiate monomials from the elements collection' do
     @polynomial = SupremeMath::Polynomial.new(@input_string)
-    @polynomial.elements.each do |element|
-      expect(element).to be_a SupremeMath::Monomial
+    @polynomial.terms.each do |term|
+      expect(term).to be_a SupremeMath::Term
     end
   end
 
   it 'should properly parse the exponent & coefficient of each element' do
     @polynomial = SupremeMath::Polynomial.new(@input_string)
-    @polynomial.elements.each do |element|
-      expect(element).to be_a SupremeMath::Monomial
+    @polynomial.terms.each do |term|
+      expect(term).to be_a SupremeMath::Term
     end
 
-    expect(@polynomial.elements[0].coefficient).to eq(-5)
-    expect(@polynomial.elements[0].exponent).to eq(1)
+    expect(@polynomial.terms[0].coefficient.value).to eq(-5)
+    expect(@polynomial.terms[0].exponent.value).to eq(1)
 
-    expect(@polynomial.elements[1].coefficient).to eq(3)
-    expect(@polynomial.elements[1].exponent).to eq(0)
+    expect(@polynomial.terms[1].coefficient.value).to eq(3)
+    expect(@polynomial.terms[1].exponent.value).to eq(1)
   end
 
   it 'should properly parse exponent & coefficient in expression without whitespace' do
@@ -37,11 +37,11 @@ describe SupremeMath::Polynomial, 'parsing binomials' do
 
     @polynomial = SupremeMath::Polynomial.new(@input_string)
 
-    expect(@polynomial.elements[0].coefficient).to eq(-5)
-    expect(@polynomial.elements[0].exponent).to eq(1)
+    expect(@polynomial.terms[0].coefficient.value).to eq(-5)
+    expect(@polynomial.terms[0].exponent.value).to eq(1)
 
-    expect(@polynomial.elements[1].coefficient).to eq(3)
-    expect(@polynomial.elements[1].exponent).to eq(0)
+    expect(@polynomial.terms[1].coefficient.value).to eq(3)
+    expect(@polynomial.terms[1].exponent.value).to eq(1)
   end
 end
 
@@ -51,9 +51,9 @@ describe SupremeMath::Polynomial, 'parsing decimal coefficients' do
   end
 
   it 'should account for decimal/float coefficients' do
-    expect(@polynomial.elements[0].coefficient).to eq(-4.90)
-    expect(@polynomial.elements[1].coefficient).to eq(0.96)
-    expect(@polynomial.elements[2].coefficient).to eq(449.36)
+    expect(@polynomial.terms[0].coefficient.value).to eq(-4.90)
+    expect(@polynomial.terms[1].coefficient.value).to eq(0.96)
+    expect(@polynomial.terms[2].coefficient.value).to eq(449.36)
   end
 end
 
@@ -64,7 +64,7 @@ describe SupremeMath::Polynomial, 'parsing polynomials of > 2 elements' do
 
   it 'should properly parse the number of elements' do
     @polynomial = SupremeMath::Polynomial.new(@input_string)
-    expect(@polynomial.elements.count).to eq(3)
+    expect(@polynomial.terms.count).to eq(3)
   end
   
   describe 'properly parsing coefficients and exponents' do
@@ -74,18 +74,18 @@ describe SupremeMath::Polynomial, 'parsing polynomials of > 2 elements' do
     end
 
     it 'should parse the parts of element 1' do
-      expect(@polynomial.elements[0].coefficient).to eq(2)
-      expect(@polynomial.elements[0].exponent).to eq(2)
+      expect(@polynomial.terms[0].coefficient.value).to eq(2)
+      expect(@polynomial.terms[0].exponent.value).to eq(2)
     end
 
     it 'should parse the parts of element 2' do
-      expect(@polynomial.elements[1].coefficient).to eq(-4)
-      expect(@polynomial.elements[1].exponent).to eq(1)
+      expect(@polynomial.terms[1].coefficient.value).to eq(-4)
+      expect(@polynomial.terms[1].exponent.value).to eq(1)
     end
 
     it 'should parse the parts of element 3' do
-      expect(@polynomial.elements[2].coefficient).to eq(6)
-      expect(@polynomial.elements[2].exponent).to eq(0)
+      expect(@polynomial.terms[2].coefficient.value).to eq(6)
+      expect(@polynomial.terms[2].exponent.value).to eq(1)
     end
   end
 end
@@ -97,15 +97,15 @@ describe SupremeMath::Polynomial, 'properly storing the base' do
   end
 
   it 'should store the base of element 1' do
-    expect(@polynomial.elements[0].base).to eq('x^2')
+    expect(@polynomial.terms[0].base.value).to eq('x')
   end
 
   it 'should store the base of element 2' do
-    expect(@polynomial.elements[1].base).to eq('x')
+    expect(@polynomial.terms[1].base.value).to eq('x')
   end
 
   it 'should store the base of element 3' do
-    expect(@polynomial.elements[2].base).to be_empty
+    expect(@polynomial.terms[2].base.value).to eq(1)
   end
 end
 
@@ -116,18 +116,18 @@ describe SupremeMath::Polynomial, 'parsing polynomials regardless of whitespace'
   end
 
   it 'should parse the parts of element 1' do
-    expect(@polynomial.elements[0].coefficient).to eq(2)
-    expect(@polynomial.elements[0].exponent).to eq(2)
+    expect(@polynomial.terms[0].coefficient.value).to eq(2)
+    expect(@polynomial.terms[0].exponent.value).to eq(2)
   end
   
   it 'should parse the parts of element 2' do
-    expect(@polynomial.elements[1].coefficient).to eq(-4)
-    expect(@polynomial.elements[1].exponent).to eq(1)
+    expect(@polynomial.terms[1].coefficient.value).to eq(-4)
+    expect(@polynomial.terms[1].exponent.value).to eq(1)
   end
   
   it 'should parse the parts of element 3' do
-    expect(@polynomial.elements[2].coefficient).to eq(6)
-    expect(@polynomial.elements[2].exponent).to eq(0)
+    expect(@polynomial.terms[2].coefficient.value).to eq(6)
+    expect(@polynomial.terms[2].exponent.value).to eq(1)
   end
 end
 
