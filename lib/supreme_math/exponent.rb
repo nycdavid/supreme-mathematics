@@ -18,7 +18,6 @@ module SupremeMath
     end
 
     def convert_numeric
-      #@value = @input.send(TYPES.select { |k, v| k.match @input }.values[0])
       match = TYPES.select { |k, v| k.match @power.to_s }.values[0]
       @value = match.is_a?(Integer) ? match : @exponent.send(match)
       rescue
