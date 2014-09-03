@@ -12,4 +12,5 @@ describe SupremeMath::Exponent, 'initialization' do
 
     expect(@exponent.value).to eq(1/2.to_r)
   end
+
 end
