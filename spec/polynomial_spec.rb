@@ -43,6 +43,12 @@ describe SupremeMath::Polynomial, 'parsing binomials' do
     expect(@polynomial.terms[1].coefficient.value).to eq(3)
     expect(@polynomial.terms[1].exponent.value).to eq(1)
   end
+
+  it 'should not parse a negative exponent like 2x^-2 into two different terms' do
+    @input_string = '2x^-2 + 3'
+
+    expect { SupremeMath::Polynomial.new(@input_string) }.to raise_error
+  end
 end
 
 describe SupremeMath::Polynomial, 'parsing decimal coefficients' do

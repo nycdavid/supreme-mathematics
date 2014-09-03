@@ -8,14 +8,14 @@ module SupremeMath
     HEADER = '\A'
     FIRST_REGEX = '(-?\d*\.?\d*[A-Za-z]?\^?\d*)'
     REGEX = '-?\d*\.?\d*[A-Za-z]?\^?\d*)'
-    DELIMITER = '\s?([\+-]?\s?'
+    DELIMITER = '\s?((?<!\^)[\+-]?\s?'
     FOOTER = '\z'
 
     def initialize(str)
       @input = str
-      reg = Regexp.new(construct_regex(str.scan(/-?\d*[A-Za-z]?\^?\d*\s?[\+-]\s?-?\d*[A-Za-z]?\^?\d*/).count))
+      #reg = Regexp.new(construct_regex(str.scan(/-?\d*[A-Za-z]?\^?\d*\s?(?<!\^)[\+-]\s?-?\d*[A-Za-z]?\^?\d*/).count))
+      reg = Regexp.new(construct_regex(str.scan(/(?<!\^)(?<!\A)[\+-]/).count))
       @terms = parse_for_elements reg, str
-      raise ArgumentError, 'Invalid format for Polynomial.' unless valid?
     end
 
     def degree
@@ -37,6 +37,7 @@ module SupremeMath
 
       def parse_for_elements(reg, str)
         match = reg.match str
+        raise ArgumentError, 'Invalid format for Polynomial.' if match.nil?
 
         return match.captures.map do |term|
           Term.new(remove_plus_sign(remove_whitespace(term)))
