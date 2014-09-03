@@ -7,15 +7,15 @@ module SupremeMath
     end
 
     def a
-      @a ||= elements.max_by { |el| el.exponent }.coefficient
+      @a ||= terms.max_by { |term| term.exponent.value }.coefficient.value
     end
 
     def b
-      @b ||= elements.sort_by { |el| el.exponent }[1].coefficient
+      @b ||= terms.sort_by { |term| term.exponent.value }[1].coefficient.value
     end
 
     def c
-      @c ||= elements.min_by { |el| el.exponent }.coefficient
+      @c ||= terms.min_by { |term| term.exponent.value }.coefficient.value
     end
 
     def roots

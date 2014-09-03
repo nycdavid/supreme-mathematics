@@ -13,7 +13,7 @@ describe SupremeMath::QuadraticFunction, 'parsing' do
   end
 
   it 'should parse elements into an array of monomials' do
-    expect(@quadratic_function.elements[0]).to be_a SupremeMath::Monomial
+    expect(@quadratic_function.terms[0]).to be_a SupremeMath::Term
   end
 
   it 'should set a, b and c attributes' do
