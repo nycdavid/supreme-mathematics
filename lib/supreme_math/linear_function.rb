@@ -6,8 +6,8 @@ module SupremeMath
     def initialize(input)
       super
       raise ArgumentError, 'Invalid format for LinearFunction.' unless valid?
-      @slope = elements.find { |el| el.base === 'x' }.coefficient
-      @y_intercept = elements.find { |el| el.base.empty? }.coefficient
+      @slope = terms.find { |term| term.base.value.is_a? String }.coefficient.value
+      @y_intercept = terms.find { |term| term.base.value === 1 }.coefficient.value
     end
 
     private
