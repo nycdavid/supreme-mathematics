@@ -27,7 +27,7 @@ describe SupremeMath::Polynomial, 'parsing binomials' do
     expect(@polynomial.terms[0].exponent.value).to eq(1)
 
     expect(@polynomial.terms[1].coefficient.value).to eq(3)
-    expect(@polynomial.terms[1].exponent.value).to eq(1)
+    expect(@polynomial.terms[1].exponent.value).to eq(0)
   end
 
   it 'should properly parse exponent & coefficient in expression without whitespace' do
@@ -41,7 +41,7 @@ describe SupremeMath::Polynomial, 'parsing binomials' do
     expect(@polynomial.terms[0].exponent.value).to eq(1)
 
     expect(@polynomial.terms[1].coefficient.value).to eq(3)
-    expect(@polynomial.terms[1].exponent.value).to eq(1)
+    expect(@polynomial.terms[1].exponent.value).to eq(0)
   end
 
   it 'should not parse a negative exponent like 2x^-2 into two different terms' do
@@ -91,7 +91,7 @@ describe SupremeMath::Polynomial, 'parsing polynomials of > 2 elements' do
 
     it 'should parse the parts of element 3' do
       expect(@polynomial.terms[2].coefficient.value).to eq(6)
-      expect(@polynomial.terms[2].exponent.value).to eq(1)
+      expect(@polynomial.terms[2].exponent.value).to eq(0)
     end
   end
 end
@@ -133,7 +133,7 @@ describe SupremeMath::Polynomial, 'parsing polynomials regardless of whitespace'
   
   it 'should parse the parts of element 3' do
     expect(@polynomial.terms[2].coefficient.value).to eq(6)
-    expect(@polynomial.terms[2].exponent.value).to eq(1)
+    expect(@polynomial.terms[2].exponent.value).to eq(0)
   end
 end
 
