@@ -9,7 +9,7 @@ describe SupremeMath::Polynomial, 'calculus operations' do
     @polynomial = SupremeMath::Polynomial.new @input_string
     @polynomial.derivative
 
-    expect(@polynomial.elements[0].coefficient).to eq(8)
-    expect(@polynomial.elements[0].exponent).to eq(1)
+    expect(@polynomial.terms[0].coefficient.value).to eq(8)
+    expect(@polynomial.terms[0].exponent.value).to eq(1)
   end
 end

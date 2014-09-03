@@ -1,12 +1,14 @@
 module SupremeMath
   class PowerFunction < Function
 
-    def self.new(*args, &block)
-      find_klass(args[0]).new(*args[0])
-    end
+    attr_reader :terms
 
-    def self.find_klass(input)
-      @@regexes.select { |k, v| k.match(input) }.values[0]
+    REGEX = /\A-?\d*\.?\d*[A-Za-z]\^(-1|1\/\d+)\z/
+    @@regexes[REGEX] = self
+
+    def initialize(input)
+      @input = input
+      @terms = [] << SupremeMath::Term.new(@input)
     end
 
   end

@@ -1,7 +1,7 @@
 module SupremeMath
   class Exponent
     
-    attr_reader :value
+    attr_accessor :value
 
     TYPES = {
       /\A\z/ => 0,

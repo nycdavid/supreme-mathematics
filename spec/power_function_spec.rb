@@ -24,7 +24,6 @@ describe SupremeMath::PowerFunction, 'parsing case 2' do
   end
 
   it 'should evaluate the function properly for values of x' do
-    pending
     expect(@power_function.evaluate(9)).to eq(3)
   end
 end

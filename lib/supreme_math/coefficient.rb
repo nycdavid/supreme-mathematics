@@ -1,7 +1,7 @@
 module SupremeMath
   class Coefficient 
 
-    attr_reader :value
+    attr_accessor :value
 
     TYPES = {
       /\A-?\d+\z/ => 'to_i',
