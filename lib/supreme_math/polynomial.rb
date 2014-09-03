@@ -13,7 +13,6 @@ module SupremeMath
 
     def initialize(str)
       @input = str
-      #reg = Regexp.new(construct_regex(str.scan(/-?\d*[A-Za-z]?\^?\d*\s?(?<!\^)[\+-]\s?-?\d*[A-Za-z]?\^?\d*/).count))
       reg = Regexp.new(construct_regex(str.scan(/(?<!\^)(?<!\A)[\+-]/).count))
       @terms = parse_for_elements reg, str
     end
