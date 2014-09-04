@@ -9,8 +9,13 @@ describe SupremeMath::PowerFunction, 'parsing case 1' do
     @power_function = SupremeMath::Function.parse(@input)
 
     expect(@power_function).to be_a SupremeMath::Monomial
-    expect(@power_function.coefficient).to eq(1)
-    expect(@power_function.exponent).to eq(2)
+    expect(@power_function.term.coefficient.value).to eq(1)
+    expect(@power_function.term.exponent.value).to eq(2)
+  end
+
+  it 'should evaluate properly for values of x in this case' do
+    pending
+    fail
   end
 end
 
