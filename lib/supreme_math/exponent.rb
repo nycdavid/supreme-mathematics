@@ -6,9 +6,9 @@ module SupremeMath
     TYPES = {
       /\A\z/ => 0,
       /\A[A-Za-z]\z/ => 1,
-      /\A-?[A-Za-z]\^\d+\z/ => 'to_i',
-      /\A-?[A-Za-z]\^\d*\.\d+\z/ => 'to_f',
-      /\A-?[A-Za-z]\^\d+\/\d+\z/ => 'to_r'
+      /\A-?[A-Za-z]\^-?\d+\z/ => 'to_i',
+      /\A-?[A-Za-z]\^-?\d*\.\d+\z/ => 'to_f',
+      /\A-?[A-Za-z]\^-?\d+\/\d+\z/ => 'to_r'
     }
     
     def initialize(power, exponent)

@@ -2,7 +2,7 @@ module SupremeMath
   class Term
     attr_reader :coefficient, :base, :exponent
 
-    REGEX = /\A(-?\d*|-?\d*\.\d+|-?\d*\/\d+?)(([A-Za-z]?)\^?(\d+|\d+\/\d+)?)\z/ 
+    REGEX = /\A(-?\d*|-?\d*\.\d+|-?\d*\/\d+?)(([A-Za-z]?)\^?(-?\d+|-?\d+\/\d+)?)\z/ 
 
     def initialize(input)
       @captures = REGEX.match(input).captures
