@@ -3,19 +3,17 @@ require 'spec_helper'
 describe SupremeMath::PowerFunction, 'parsing case 1' do
   before :all do
     @input = 'x^2'
+    @power_function = SupremeMath::Function.parse(@input)
   end
 
   it 'should parse into monomial coefficient and exponent' do
-    @power_function = SupremeMath::Function.parse(@input)
-
     expect(@power_function).to be_a SupremeMath::Monomial
     expect(@power_function.term.coefficient.value).to eq(1)
     expect(@power_function.term.exponent.value).to eq(2)
   end
 
   it 'should evaluate properly for values of x in this case' do
-    pending
-    fail
+    expect(@power_function.evaluate(6)).to eq(36)
   end
 end
 
