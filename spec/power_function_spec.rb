@@ -44,6 +44,3 @@ describe SupremeMath::PowerFunction, 'parsing case 3' do
     expect(@power_function.evaluate(2)).to eq(1/2.to_r)
   end
 end
-
-describe SupremeMath::PowerFunction, 'invalid formats' do
-end
