@@ -31,5 +31,19 @@ describe SupremeMath::PowerFunction, 'parsing case 2' do
   end
 end
 
+describe SupremeMath::PowerFunction, 'parsing case 3' do
+  before :all do
+    @power_function = SupremeMath::Function.parse('x^-1')
+  end
+
+  it 'should parse into a PowerFunction' do
+    expect(@power_function).to be_a SupremeMath::PowerFunction
+  end
+
+  it 'should evaluate the function properly for values of x' do
+    expect(@power_function.evaluate(2)).to eq(1/2.to_r)
+  end
+end
+
 describe SupremeMath::PowerFunction, 'invalid formats' do
 end
