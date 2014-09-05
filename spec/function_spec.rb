@@ -35,8 +35,12 @@ describe SupremeMath::Function, 'simplifying a function' do
 
   it 'should combine like terms' do
     pending
-    fail
     @polynomial = SupremeMath::Polynomial.new('x^2 + x^2')
+
+    expect(@polynomial.terms.count).to eq(1)
+    expect(@polynomial.terms.first.coefficient.value).to eq(2)
+    expect(@polynomial.terms.first.base.value).to eq('x')
+    expect(@polynomial.terms.first.exponent.value).to eq(2)
   end
 end
 
