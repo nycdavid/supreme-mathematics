@@ -21,6 +21,18 @@ module SupremeMath
       @degree ||= @terms.map { |term| term.exponent.value }.max
     end
     
+    def linear?
+      degree === 1
+    end
+    
+    def quadratic?
+      degree === 2
+    end
+
+    def cubic?
+      degree === 3
+    end
+    
     private 
       def valid?
         @terms.find { |term| term.exponent.value < 0 }.nil? or @terms.find { |term| term.exponent.value.integer? == false }.nil?
