@@ -17,7 +17,6 @@ module SupremeMath
 
     def initialize(str)
       @input = str
-      reg = Regexp.new(construct_regex(str.scan(/(?<!\^)(?<!\A)[\+-]/).count))
       @terms = parse_for_elements str
     end
 
@@ -57,12 +56,12 @@ module SupremeMath
       end
       
       def construct_regex(count)
-       regex_array = [] << FIRST_REGEX
-       count.times do
-         regex_array << REGEX
-       end
-       regex_array = regex_array.join(DELIMITER)
-       HEADER + regex_array + FOOTER
+     # regex_array = [] << FIRST_REGEX
+     # count.times do
+     #   regex_array << REGEX
+     # end
+     # regex_array = regex_array.join(DELIMITER)
+     # HEADER + regex_array + FOOTER
      end
 
   end
