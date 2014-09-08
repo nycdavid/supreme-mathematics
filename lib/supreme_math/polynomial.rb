@@ -11,6 +11,10 @@ module SupremeMath
     DELIMITER = '\s?((?<!\^)[\+-]?\s?'
     FOOTER = '\z'
 
+    DETECT_REGEX = /(?<=[A-Za-z])\^?\d*/
+
+    @@regexes[DETECT_REGEX] = self
+
     def initialize(str)
       @input = str
       reg = Regexp.new(construct_regex(str.scan(/(?<!\^)(?<!\A)[\+-]/).count))
@@ -47,11 +51,8 @@ module SupremeMath
       end
 
       def parse_for_elements(reg, str)
-        match = reg.match str
-        raise ArgumentError, 'Invalid format for Polynomial.' if match.nil?
-
-        return match.captures.map do |term|
-          Term.new(remove_plus_sign(remove_whitespace(term)))
+        return str.scan(/([\+-]|\A)\s*(\d*\.*\d*[A-Za-z]*\^*\d*)/).map do |term|
+          Term.new(remove_plus_sign(remove_whitespace(term.join)))
         end
       end
       
