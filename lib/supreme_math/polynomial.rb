@@ -55,14 +55,5 @@ module SupremeMath
         end
       end
       
-      def construct_regex(count)
-     # regex_array = [] << FIRST_REGEX
-     # count.times do
-     #   regex_array << REGEX
-     # end
-     # regex_array = regex_array.join(DELIMITER)
-     # HEADER + regex_array + FOOTER
-     end
-
   end
 end
