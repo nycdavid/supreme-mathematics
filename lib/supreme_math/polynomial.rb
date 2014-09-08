@@ -18,7 +18,7 @@ module SupremeMath
     def initialize(str)
       @input = str
       reg = Regexp.new(construct_regex(str.scan(/(?<!\^)(?<!\A)[\+-]/).count))
-      @terms = parse_for_elements reg, str
+      @terms = parse_for_elements str
     end
 
     def degree
@@ -50,7 +50,7 @@ module SupremeMath
         element.gsub("+", "")
       end
 
-      def parse_for_elements(reg, str)
+      def parse_for_elements(str)
         return str.scan(/([\+-]|\A)\s*(\d*\.*\d*[A-Za-z]*\^*\d*)/).map do |term|
           Term.new(remove_plus_sign(remove_whitespace(term.join)))
         end
