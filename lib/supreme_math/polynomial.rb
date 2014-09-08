@@ -5,12 +5,6 @@ module SupremeMath
 
     include Calculus
 
-    HEADER = '\A'
-    FIRST_REGEX = '(-?\d*\.?\d*[A-Za-z]?\^?\d*)'
-    REGEX = '-?\d*\.?\d*[A-Za-z]?\^?\d*)'
-    DELIMITER = '\s?((?<!\^)[\+-]?\s?'
-    FOOTER = '\z'
-
     DETECT_REGEX = /(?<=[A-Za-z])\^?\d*/
 
     @@regexes[DETECT_REGEX] = self
