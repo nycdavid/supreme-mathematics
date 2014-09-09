@@ -4,6 +4,7 @@ module SupremeMath
     attr_reader :terms
 
     REGEX = /\A-?\d*\.?\d*[A-Za-z]\^(-1|1\/\d+)\z/
+
     @@regexes[REGEX] = self
 
     def initialize(input)

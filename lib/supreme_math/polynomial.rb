@@ -5,10 +5,6 @@ module SupremeMath
 
     include Calculus
 
-    DETECT_REGEX = /(?<=[A-Za-z])\^?\d*/
-
-    @@regexes[DETECT_REGEX] = self
-
     def initialize(str)
       @input = str
       @terms = parse_for_elements str
