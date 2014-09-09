@@ -137,6 +137,17 @@ describe SupremeMath::Polynomial, 'parsing polynomials regardless of whitespace'
   end
 end
 
+describe SupremeMath::Polynomial, 'parsing polynomials with rational coefficients' do
+  before :all do
+    @input_string = '2x^2 + 3/4x'  
+    @polynomial = SupremeMath::Function.parse(@input_string)
+  end
+
+  it 'should be the right type' do
+    expect(@polynomial).to be_a SupremeMath::Polynomial
+  end
+end
+
 describe SupremeMath::Polynomial, '#to_string' do
   it 'should return a string representation of the polynomial' do
     @polynomial = SupremeMath::Polynomial.new('x^2 - 4x + 3')
@@ -177,5 +188,47 @@ describe SupremeMath::Polynomial, '#degree' do
     @polynomial = SupremeMath::Polynomial.new('x^7 + 2x^6 + x^3 + 4')
 
     expect(@polynomial.degree).to eq(7)
+  end
+end
+
+describe SupremeMath::Function, '#quadratic?' do
+  it 'should return true for degree 2' do
+    @polynomial = SupremeMath::Polynomial.new('x^2 + 2x')
+
+    expect(@polynomial.quadratic?).to be true
+  end
+
+  it 'should return false for degree != 2' do
+    @polynomial = SupremeMath::Polynomial.new('x^3 + 3x^2')
+
+    expect(@polynomial.quadratic?).to be false
+  end
+end
+
+describe SupremeMath::Function, '#linear?' do
+  it 'should return true for degree 1' do
+    @polynomial = SupremeMath::Polynomial.new('2x + 1')
+
+    expect(@polynomial.linear?).to be true  
+  end
+
+  it 'should return false for degree != 1' do
+    @polynomial = SupremeMath::Polynomial.new('2x^2 + 4x + 2')
+
+    expect(@polynomial.linear?).to be false
+  end
+end
+
+describe SupremeMath::Function, '#cubic?' do
+  it 'should return true for degree 3' do
+    @polynomial = SupremeMath::Polynomial.new('3x^3 + 2x^2')
+
+    expect(@polynomial.cubic?).to be true
+  end
+
+  it 'should return false for degree != 3' do
+    @polynomial = SupremeMath::Polynomial.new('3x^7 + 2x^3 + 4x')
+
+    expect(@polynomial.cubic?).to be false
   end
 end
