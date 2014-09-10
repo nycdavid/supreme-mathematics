@@ -3,7 +3,7 @@ require 'spec_helper'
 describe SupremeMath::LinearFunction, 'slope and intercept' do
   before :each do
     @input_string = '3x + 4'
-    @linear_function = SupremeMath::LinearFunction.new(@input_string)
+    @linear_function = SupremeMath::Function.parse(@input_string)
   end
 
   it 'should properly identify the slope' do
