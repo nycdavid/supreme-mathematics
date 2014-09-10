@@ -54,44 +54,10 @@ describe SupremeMath::Function, 'abstract/algebraic function evaluation' do
   end
 end
 
-describe SupremeMath::Function, '#quadratic?' do
-  it 'should return true for degree 2' do
-    @polynomial = SupremeMath::Polynomial.new('x^2 + 2x')
+describe SupremeMath::Function, 'function detection' do
+  it 'should properly detect a linear function (polynomial)' do
+    @linear_function = SupremeMath::Function.parse('3x + 4')
 
-    expect(@polynomial.quadratic?).to be true
-  end
-
-  it 'should return false for degree != 2' do
-    @polynomial = SupremeMath::Polynomial.new('x^3 + 3x^2')
-
-    expect(@polynomial.quadratic?).to be false
-  end
-end
-
-describe SupremeMath::Function, '#linear?' do
-  it 'should return true for degree 1' do
-    @polynomial = SupremeMath::Polynomial.new('2x + 1')
-
-    expect(@polynomial.linear?).to be true  
-  end
-
-  it 'should return false for degree != 1' do
-    @polynomial = SupremeMath::Polynomial.new('2x^2 + 4x + 2')
-
-    expect(@polynomial.linear?).to be false
-  end
-end
-
-describe SupremeMath::Function, '#cubic?' do
-  it 'should return true for degree 3' do
-    @polynomial = SupremeMath::Polynomial.new('3x^3 + 2x^2')
-
-    expect(@polynomial.cubic?).to be true
-  end
-
-  it 'should return false for degree != 3' do
-    @polynomial = SupremeMath::Polynomial.new('3x^7 + 2x^3 + 4x')
-
-    expect(@polynomial.cubic?).to be false
+    expect(@linear_function).to be_a SupremeMath::LinearFunction
   end
 end
