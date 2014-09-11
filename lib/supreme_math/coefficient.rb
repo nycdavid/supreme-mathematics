@@ -21,7 +21,7 @@ module SupremeMath
     end
 
     def convert_numeric
-      @value = @input.send(TYPES.select { |k, v| k.match @input }.values[0])
+      @value = @input.__send__(TYPES.select { |k, v| k.match @input }.values[0])
       rescue
         raise ArgumentError, 'Invalid format for Coefficient class.'
     end
