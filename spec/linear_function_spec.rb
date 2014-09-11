@@ -64,3 +64,19 @@ describe SupremeMath::LinearFunction, 'parsing errors and incorrect arguments' d
   end
 
 end
+
+describe SupremeMath::LinearFunction, 'table test of different forms of linear functions' do
+  it 'should return a LinearFunction instance for each' do
+    equations = ['(3/4)x + (3/4)', '(3/4)x + 3', '(3/4)x + 3.33', '(3/4)x - (3/4)', '(3/4)x - 3', '(3/4)x - 3.33', '3x + (3/4)',
+     '3x + 3', '3x + 3.33', '3x - (3/4)', '3x - 3', '3x - 3.33', '3.33x + (3/4)', '3.33x + 3', '3.33x + 3.33',
+     '3.33x - (3/4)', '3.33x - 3', '3.33x - 3.33', '(-3/4)x + (3/4)', '(-3/4)x + 3', '(-3/4)x + 3.33', '(-3/4)x - (3/4)', 
+     '(-3/4)x - 3', '-3x - 3', '-3x - 3.33', '-3.33x + (3/4)', '-3.33x + 3', '-3.33x + 3.33', '-3.33x - (3/4)', 
+     '-3.33x - 3', '-3.33x - 3.33']
+    
+    equations.each do |equation|
+      @linear_function = SupremeMath::Function.parse(equation)
+
+      expect(@linear_function).to be_a SupremeMath::LinearFunction
+    end
+  end
+end
