@@ -7,6 +7,8 @@ require 'bigdecimal'
 require "supreme_math/calculus"
 
 # Classes
+require 'supreme_math/constant'
+require 'supreme_math/variable'
 require 'supreme_math/coefficient'
 require 'supreme_math/base'
 require 'supreme_math/exponent'
