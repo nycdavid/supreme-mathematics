@@ -73,3 +73,29 @@ describe SupremeMath::Variable, 'parsing' do
     expect(@variable.exponent).to eq(1)
   end
 end
+
+describe SupremeMath::Variable, 'parsing different exponents' do
+  it 'should parse a rational exponent' do
+    @variable = SupremeMath::Variable.new('x^(1/2)')
+
+    expect(@variable.coefficient).to eq(1)
+    expect(@variable.base).to eq('x')
+    expect(@variable.exponent).to eq(1/2.to_r)
+  end
+
+  it 'should parse a negative exponent' do
+    @variable = SupremeMath::Variable.new('x^-2')
+
+    expect(@variable.coefficient).to eq(1)
+    expect(@variable.base).to eq('x')
+    expect(@variable.exponent).to eq(-2)
+  end
+
+  it 'should parse a negative rational exponent' do
+    @variable = SupremeMath::Variable.new('x^-(1/2)')
+
+    expect(@variable.coefficient).to eq(1)
+    expect(@variable.base).to eq('x')
+    expect(@variable.exponent).to eq(-1/2.to_r) 
+  end
+end
