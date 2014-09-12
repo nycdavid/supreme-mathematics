@@ -1,7 +1,7 @@
 module SupremeMath
   class Term
 
-    REGEX = /([\+-]?\s*\(*-?\d*[\/\.]*\d*\)*[a-z]) | ([\+-]? \s* \(*\d[\/\.]*\d*\)*)/ix
+    REGEX = /([\+-]?\s*\(*-?\d*[\/\.]*\d*\)*[a-z] \^? -?\(?\d*\/?\d*\)?) | ([\+-]? \s* \(*\d[\/\.]*\d*\)*)/ix
     
     def self.parse(input)
       captures = REGEX.match(input).captures

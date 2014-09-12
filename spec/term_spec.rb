@@ -16,4 +16,13 @@ describe SupremeMath::Term, 'initialization' do
     expect(term.base).to eq('x')
     expect(term.exponent).to eq(1)
   end
+
+  it 'should parse a variable with an exponent' do
+    term = SupremeMath::Term.parse('3x^2')
+
+    expect(term).to be_a SupremeMath::Variable
+    expect(term.coefficient).to be(3)
+    expect(term.base).to eq('x')
+    expect(term.exponent).to eq(2)
+  end
 end
