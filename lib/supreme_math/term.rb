@@ -1,20 +1,18 @@
 module SupremeMath
   class Term
-    attr_reader :coefficient, :base, :exponent
 
-    REGEX = /\A(-?\d*|-?\d*\.\d+|-?\d*\/\d+?)(([A-Za-z]?)\^?(-?\d+|-?\d+\/\d+)?)\z/ 
-
-    def initialize(input)
-      @captures = REGEX.match(input).captures
-      set_components
+    REGEX = /([\+-]?\s*\(*-?\d*[\/\.]*\d*\)*[a-z]) | ([\+-]? \s* \(*\d[\/\.]*\d*\)*)/ix
+    
+    def self.parse(input)
+      captures = REGEX.match(input).captures
+      if captures[0].nil?
+        SupremeMath::Constant.new(captures[1]) 
+      else
+        SupremeMath::Variable.new(captures[0])
+      end
     end
 
     private
-      def set_components
-        @coefficient = SupremeMath::Coefficient.new(@captures[0])
-        @base = SupremeMath::Base.new(@captures[2])
-        @exponent = SupremeMath::Exponent.new(@captures[1], @captures[3])
-      end
 
   end
 end
