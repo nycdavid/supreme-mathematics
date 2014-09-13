@@ -19,5 +19,17 @@ module SupremeMath
       @exponents ||= variables.map { |variable| variable.exponent }.sort { |x, y| y <=> x }
     end
 
+    def constant
+      @constant ||= @terms.select { |term| term.class == SupremeMath::Constant }.first
+    end
+
+    def all_integer_exponents?
+      exponents.select { |exponent| !exponent.is_a?(Integer) }.count == 0
+    end
+  
+    def highest_exponent
+      exponents.first
+    end
+
   end
 end

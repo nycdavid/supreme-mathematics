@@ -42,3 +42,54 @@ describe SupremeMath::TermCollection, '#exponents' do
     expect(@term_collection.exponents).to eq([2, 1, 1/2.to_r])
   end
 end
+
+describe SupremeMath::TermCollection, '#all_integer_exponents?' do
+  it 'should return true if all variable exponent values are integers' do
+    @terms = 
+      [
+        SupremeMath::Term.parse('3'), SupremeMath::Term.parse('4x'), 
+        SupremeMath::Term.parse('2x^2')
+      ]
+
+    @term_collection = SupremeMath::TermCollection.new(@terms)
+
+    expect(@term_collection.all_integer_exponents?).to be true
+  end
+
+  it 'should return false if even one variable exponent is not an integer' do
+    @terms = 
+      [
+        SupremeMath::Term.parse('3'), SupremeMath::Term.parse('4x'), 
+        SupremeMath::Term.parse('2x^2'), SupremeMath::Term.parse('2x^(1/2)')
+      ]
+    @term_collection = SupremeMath::TermCollection.new(@terms)
+
+    expect(@term_collection.all_integer_exponents?).to be false
+  end
+end
+
+describe SupremeMath::TermCollection, '#highest_exponent' do
+  it 'should return the numeric value of the greatest exponent' do
+    @terms = 
+      [
+        SupremeMath::Term.parse('3'), SupremeMath::Term.parse('4x'), 
+        SupremeMath::Term.parse('2x^2'), SupremeMath::Term.parse('2x^(1/2)')
+      ]
+    @term_collection = SupremeMath::TermCollection.new(@terms)
+
+    expect(@term_collection.highest_exponent).to eq(2)
+  end
+end
+
+describe SupremeMath::TermCollection, '#constant' do
+  it 'should return the constant of the expression' do
+    @terms = 
+      [
+        SupremeMath::Term.parse('3'), SupremeMath::Term.parse('4x'), 
+        SupremeMath::Term.parse('2x^2'), SupremeMath::Term.parse('2x^(1/2)')
+      ]
+    @term_collection = SupremeMath::TermCollection.new(@terms)
+
+    expect(@term_collection.constant.value).to eq(3)
+  end
+end
