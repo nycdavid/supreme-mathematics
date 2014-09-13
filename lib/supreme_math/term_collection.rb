@@ -31,5 +31,9 @@ module SupremeMath
       exponents.first
     end
 
+    def all
+      @terms
+    end
+
   end
 end

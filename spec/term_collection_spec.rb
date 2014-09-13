@@ -93,3 +93,16 @@ describe SupremeMath::TermCollection, '#constant' do
     expect(@term_collection.constant.value).to eq(3)
   end
 end
+
+describe SupremeMath::TermCollection, '#all' do
+  it 'should provide a synonym for the terms array/attribute' do
+    @terms = 
+      [
+        SupremeMath::Term.parse('3'), SupremeMath::Term.parse('4x'), 
+        SupremeMath::Term.parse('2x^2'), SupremeMath::Term.parse('2x^(1/2)')
+      ]
+    @term_collection = SupremeMath::TermCollection.new(@terms)
+
+    expect(@term_collection.all).to eq(@term_collection.terms)
+  end
+end
