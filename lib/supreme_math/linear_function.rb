@@ -3,15 +3,11 @@ module SupremeMath
 
     attr_reader :slope, :y_intercept
 
-    YAML.load_file('lib/config/regexes.yml')['linear_function'].each do |regex|
-      @@regexes[Regexp.new(regex, true)] = self
-    end
-
-    def initialize(input)
+    def initialize(input, terms)
       super
       raise ArgumentError, 'Invalid format for LinearFunction.' unless valid?
-      @slope = terms.find { |term| term.base.value.is_a? String }.coefficient.value
-      @y_intercept = terms.find { |term| term.base.value === 1 }.coefficient.value
+      @slope = terms.variables[0].coefficient
+      @y_intercept = terms.constant.value
     end
 
     private
