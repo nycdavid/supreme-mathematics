@@ -8,7 +8,11 @@ module SupremeMath
     end
 
     def variable_count
-      @variable_count ||= @terms.select { |term| term.class == SupremeMath::Variable }.count
+      @variable_count ||= variables.count
+    end
+
+    def variables
+      @variables ||= @terms.select { |term| term.class == SupremeMath::Variable }
     end
 
   end

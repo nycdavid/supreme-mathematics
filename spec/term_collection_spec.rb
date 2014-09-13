@@ -18,3 +18,13 @@ describe SupremeMath::TermCollection, '#variable_count' do
     expect(@term_collection.variable_count).to eq(2)
   end
 end
+
+describe SupremeMath::TermCollection, '#variables' do
+  it 'should return an array of only the variables' do
+    @terms = [SupremeMath::Term.parse('3'), SupremeMath::Term.parse('4x'), SupremeMath::Term.parse('2x^2')]
+    @term_collection = SupremeMath::TermCollection.new(@terms)
+
+    expect(@term_collection.variables).to be_a Array
+    expect(@term_collection.variables[0]).to be_a SupremeMath::Variable
+  end
+end
