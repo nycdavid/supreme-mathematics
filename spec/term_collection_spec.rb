@@ -28,3 +28,17 @@ describe SupremeMath::TermCollection, '#variables' do
     expect(@term_collection.variables[0]).to be_a SupremeMath::Variable
   end
 end
+
+describe SupremeMath::TermCollection, '#exponents' do
+  it 'should return an array of the exponent values of the variables' do
+    @terms = 
+      [
+        SupremeMath::Term.parse('3'), SupremeMath::Term.parse('4x'), 
+        SupremeMath::Term.parse('2x^2'), SupremeMath::Term.parse('2x^(1/2)')
+      ]
+    
+    @term_collection = SupremeMath::TermCollection.new(@terms)
+    
+    expect(@term_collection.exponents).to eq([2, 1, 1/2.to_r])
+  end
+end

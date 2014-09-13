@@ -15,5 +15,9 @@ module SupremeMath
       @variables ||= @terms.select { |term| term.class == SupremeMath::Variable }
     end
 
+    def exponents
+      @exponents ||= variables.map { |variable| variable.exponent }.sort { |x, y| y <=> x }
+    end
+
   end
 end
