@@ -1,7 +1,7 @@
 module SupremeMath
   class Constant
 
-    attr_reader :value, :input
+    attr_reader :value, :input, :exponent
     
     FORMATS = {
       /^[\+-]?\s*\d+$/ => 'to_i',
@@ -11,6 +11,7 @@ module SupremeMath
    
     def initialize(input)
       @input = input
+      @exponent = 0
       coerce
     end
 
