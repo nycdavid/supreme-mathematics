@@ -15,6 +15,7 @@ require 'supreme_math/exponent'
 require 'supreme_math/supreme_rational'
 require 'supreme_math/rational_function'
 require 'supreme_math/term'
+require 'supreme_math/term_collection'
 require "supreme_math/function"
 require "supreme_math/monomial"
 require "supreme_math/polynomial"
