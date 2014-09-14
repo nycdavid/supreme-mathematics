@@ -1,6 +1,12 @@
 require 'spec_helper'
 
 describe SupremeMath::Variable, 'parsing' do
+  it 'should be a type of Term' do
+    @variable = SupremeMath::Variable.new('+ 3x')
+
+    expect(@variable).to be_a SupremeMath::Term
+  end
+
   it 'should accept an input as param in the initializer' do
     @variable = SupremeMath::Variable.new('+ 3x')
 

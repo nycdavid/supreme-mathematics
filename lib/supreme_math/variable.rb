@@ -1,5 +1,5 @@
 module SupremeMath
-  class Variable
+  class Variable < Term
 
     attr_reader :coefficient, :base, :exponent
 
@@ -18,9 +18,17 @@ module SupremeMath
     end
 
     def set_components
-      @coefficient = @captures[0].to_s === '' ? 1 : delint(@captures[0]).__send__(NUMERIC_MAP.select { |k, v| k.match(@captures[0]) }.values[0])
+      if @captures[0].to_s == ''
+        @coefficient = 1
+      elsif @captures[0].gsub(/\s+/, '') == '-'
+        @coefficient = -1
+      elsif @captures[0].gsub(/\s+/, '') == '+'
+        @coefficient = 1
+      else
+        @coefficient = delint(@captures[0]).__send__(NUMERIC_MAP.select { |k, v| k.match(@captures[0]) }.values[0])
+      end
       @base = @captures[1]
-      @exponent = @captures[2].to_s === '' ? 1 : delint(@captures[2]).__send__(NUMERIC_MAP.select { |k, v| k.match(@captures[2]) }.values[0])
+      @exponent = @captures[2].to_s == '' ? 1 : delint(@captures[2]).__send__(NUMERIC_MAP.select { |k, v| k.match(@captures[2]) }.values[0])
     end
 
     private
