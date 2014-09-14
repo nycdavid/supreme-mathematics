@@ -5,13 +5,13 @@ module SupremeMath
 
     include Calculus
 
-    def initialize(str)
-      @input = str
-      @terms = parse_for_elements str
+    def initialize(input, terms)
+      @input = input
+      @terms = terms
     end
 
     def degree
-      @degree ||= @terms.map { |term| term.exponent.value }.max
+      @degree ||= @terms.highest_exponent
     end
     
     def linear?
