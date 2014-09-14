@@ -7,6 +7,7 @@ require 'bigdecimal'
 require "supreme_math/calculus"
 
 # Classes
+require 'supreme_math/term'
 require 'supreme_math/constant'
 require 'supreme_math/variable'
 require 'supreme_math/coefficient'
@@ -14,7 +15,6 @@ require 'supreme_math/base'
 require 'supreme_math/exponent'
 require 'supreme_math/supreme_rational'
 require 'supreme_math/rational_function'
-require 'supreme_math/term'
 require 'supreme_math/term_collection'
 require "supreme_math/function"
 require "supreme_math/monomial"
