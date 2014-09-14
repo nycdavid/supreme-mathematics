@@ -1,19 +1,9 @@
 require 'spec_helper'
 
-describe SupremeMath::QuadraticFunction, 'validating' do
-  it 'should raise an error if the input string is not a quadratic' do
-    expect { SupremeMath::QuadraticFunction.new('x^3 + 3x^2') }.to raise_error ArgumentError
-  end
-end
-
 describe SupremeMath::QuadraticFunction, 'parsing' do
   before :each do
     @input = 'x^2 + 3x - 4'
-    @quadratic_function = SupremeMath::QuadraticFunction.new(@input)
-  end
-
-  it 'should parse elements into an array of monomials' do
-    expect(@quadratic_function.terms[0]).to be_a SupremeMath::Term
+    @quadratic_function = SupremeMath::Function.parse(@input)
   end
 
   it 'should set a, b and c attributes' do
@@ -25,10 +15,10 @@ end
 
 describe SupremeMath::QuadraticFunction, 'solving for roots' do
   before :all do
-    @quadratic_function = SupremeMath::QuadraticFunction.new('449.36 + 0.96t - 4.90t^2')
+    @quadratic_function = SupremeMath::Function.parse('449.36 + 0.96t - 4.90t^2')
   end
 
-  it 'should for the roots' do
+  it 'should solve for the roots' do
     expect(@quadratic_function.roots.map { |root| root.round(2) }).to eq([-9.48, 9.67])
   end
 end

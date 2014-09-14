@@ -1,21 +1,21 @@
 module SupremeMath
   class QuadraticFunction < Polynomial
 
-    def initialize(input)
+    def initialize(input, term_collection)
       super
       raise ArgumentError, 'Invalid format for QuadraticFunction.' unless valid?
     end
 
     def a
-      @a ||= terms.max_by { |term| term.exponent.value }.coefficient.value
+      @a ||= terms.all.max_by { |term| term.exponent }.coefficient
     end
 
     def b
-      @b ||= terms.sort_by { |term| term.exponent.value }[1].coefficient.value
+      @b ||= terms.all.sort_by { |term| term.exponent }[1].coefficient
     end
 
     def c
-      @c ||= terms.min_by { |term| term.exponent.value }.coefficient.value
+      @c ||= terms.constant.value
     end
 
     def roots
