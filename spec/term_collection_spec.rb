@@ -106,3 +106,26 @@ describe SupremeMath::TermCollection, '#all' do
     expect(@term_collection.all).to eq(@term_collection.terms)
   end
 end
+
+describe SupremeMath::TermCollection, '#all_positive_exponents?' do
+  before :all do
+    @terms = 
+      [
+        SupremeMath::Term.parse('3'), SupremeMath::Term.parse('4x'), 
+        SupremeMath::Term.parse('2x^2'), SupremeMath::Term.parse('2x^(1/2)')
+      ]
+  end
+
+  it 'should return true if all exponents are positive' do
+    @term_collection = SupremeMath::TermCollection.new(@terms)
+    
+    expect(@term_collection.all_positive_exponents?).to be true
+  end
+
+  it 'should return false if all exponents are not positive' do
+    @terms << SupremeMath::Term.parse('x^-1')
+    @term_collection = SupremeMath::TermCollection.new(@terms)
+
+    expect(@term_collection.all_positive_exponents?).to be false
+  end
+end

@@ -26,6 +26,10 @@ module SupremeMath
     def all_integer_exponents?
       exponents.select { |exponent| !exponent.is_a?(Integer) }.count == 0
     end
+
+    def all_positive_exponents?
+      exponents.select { |exponent| exponent < 0 }.count == 0
+    end
   
     def highest_exponent
       exponents.first
