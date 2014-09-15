@@ -1,5 +1,5 @@
 module SupremeMath
-  class Constant
+  class Constant < Term
 
     attr_reader :value, :input, :exponent
     

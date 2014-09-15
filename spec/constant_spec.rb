@@ -1,6 +1,12 @@
 require 'spec_helper'
 
 describe SupremeMath::Constant, 'initialization' do
+  it 'should be a type of term' do
+    @constant = SupremeMath::Constant.new('+ 3')
+
+    expect(@constant).to be_a SupremeMath::Term
+  end
+
   it 'should accept an input as param in the initializer' do
     @constant = SupremeMath::Constant.new('+ 3')
 
