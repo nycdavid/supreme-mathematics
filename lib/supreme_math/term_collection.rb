@@ -20,7 +20,7 @@ module SupremeMath
     end
 
     def constant
-      @constant ||= @terms.select { |term| term.class == SupremeMath::Constant }.first
+      @constant ||= (@terms.select { |term| term.class == SupremeMath::Constant }.first || SupremeMath::Constant.new('0'))
     end
 
     def all_integer_exponents?
