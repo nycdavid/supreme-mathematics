@@ -6,10 +6,10 @@ describe SupremeMath::Polynomial, 'calculus operations' do
   end
 
   it 'should properly calculate the coefficient and exponent of element 1' do
-    @polynomial = SupremeMath::Polynomial.new @input_string
+    @polynomial = SupremeMath::Function.parse @input_string
     @polynomial.derivative
 
-    expect(@polynomial.terms[0].coefficient.value).to eq(8)
-    expect(@polynomial.terms[0].exponent.value).to eq(1)
+    expect(@polynomial.terms.all[0].coefficient).to eq(8)
+    expect(@polynomial.terms.all[0].exponent).to eq(1)
   end
 end
