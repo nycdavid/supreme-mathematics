@@ -1,7 +1,8 @@
 module SupremeMath
   class Variable < Term
 
-    attr_reader :coefficient, :base, :exponent
+    attr_reader :base
+    attr_accessor :coefficient, :exponent
 
     REGEX = /([\+-]?\s*\(*-?\d?[\/\.]*\d*\)*) ([a-z]) \^? (-?\(?\d*\/?\d*\)?)/ix
 
