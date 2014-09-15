@@ -7,9 +7,8 @@ describe SupremeMath::PowerFunction, 'parsing case 1' do
   end
 
   it 'should parse into monomial coefficient and exponent' do
-    expect(@power_function).to be_a SupremeMath::Monomial
-    expect(@power_function.term.coefficient.value).to eq(1)
-    expect(@power_function.term.exponent.value).to eq(2)
+    expect(@power_function.terms.all[0].coefficient).to eq(1)
+    expect(@power_function.terms.all[0].exponent).to eq(2)
   end
 
   it 'should evaluate properly for values of x in this case' do
@@ -19,7 +18,7 @@ end
 
 describe SupremeMath::PowerFunction, 'parsing case 2' do
   before :all do
-    @power_function = SupremeMath::Function.parse('x^1/2')
+    @power_function = SupremeMath::Function.parse('x^(1/2)')
   end
 
   it 'should parse into PowerFunction' do

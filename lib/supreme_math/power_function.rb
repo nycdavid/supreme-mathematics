@@ -3,13 +3,9 @@ module SupremeMath
 
     attr_reader :terms
 
-    REGEX = /\A-?\d*\.?\d*[A-Za-z]\^(-1|1\/\d+)\z/
-
-    @@regexes[REGEX] = self
-
-    def initialize(input)
+    def initialize(input, term_collection)
       @input = input
-      @terms = [] << SupremeMath::Term.new(@input)
+      @terms = term_collection
     end
 
   end
