@@ -7,7 +7,7 @@ module SupremeMath
       super
       raise ArgumentError, 'Invalid format for LinearFunction.' unless valid?
       @slope = terms.variables[0].coefficient
-      @y_intercept = terms.constant.value
+      @y_intercept = terms.constant.nil? ? 0 : terms.constant.value
     end
 
     private
