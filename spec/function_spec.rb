@@ -34,22 +34,6 @@ describe SupremeMath::Function, 'function evaluation with a numeric value' do
   end
 end
 
-describe SupremeMath::Function, 'simplifying a function' do
-  it 'should present a string representation of the function' do
-    @polynomial = SupremeMath::Function.parse('x^2 + 2')
-    expect(@polynomial.to_string).to eq('x^2 + 2')
-  end
-
-  it 'should combine like terms' do
-    @polynomial = SupremeMath::Function.parse('x^2 + x^2')
-
-    expect(@polynomial.terms.all.count).to eq(1)
-    expect(@polynomial.terms.all.coefficient.value).to eq(2)
-    expect(@polynomial.terms.all.first.base.value).to eq('x')
-    expect(@polynomial.terms.first.exponent.value).to eq(2)
-  end
-end
-
 describe SupremeMath::Function, 'abstract/algebraic function evaluation' do
   it 'should insert algebraic expressions in place of x in a function' do
     pending

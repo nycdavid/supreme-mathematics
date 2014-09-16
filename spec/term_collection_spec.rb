@@ -129,3 +129,14 @@ describe SupremeMath::TermCollection, '#all_positive_exponents?' do
     expect(@term_collection.all_positive_exponents?).to be false
   end
 end
+
+describe SupremeMath::TermCollection, '#simplify' do
+  before :all do
+    @terms = [SupremeMath::Term.parse('x^2'), SupremeMath::Term.parse('+ x^2'), SupremeMath::Term.parse('- x^3')]
+    @term_collection = SupremeMath::TermCollection.new(@terms)
+  end
+
+  it 'should combine like terms' do
+    expect(@term_collection.simplify.count).to eq(2)
+  end
+end

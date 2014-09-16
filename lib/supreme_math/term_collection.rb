@@ -35,6 +35,16 @@ module SupremeMath
       exponents.first
     end
 
+    def simplify
+      new_terms = []
+      terms = variables.map { |variable| { coefficient: variable.coefficient, pair: "#{variable.base}^#{variable.exponent.to_s}" } }
+      terms.map { |term| term[:pair] }.uniq.each do |unique_pair|
+        sum = terms.select { |term| term[:pair] == unique_pair }.map { |term| term[:coefficient] }.reduce(:+)
+        new_terms << SupremeMath::Term.parse("#{sum}#{unique_pair}")
+      end
+      new_terms
+    end
+
     def all
       @terms
     end
