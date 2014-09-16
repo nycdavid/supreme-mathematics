@@ -7,10 +7,10 @@ describe SupremeMath::Function, 'function detection' do
     expect(@linear_function).to be_a SupremeMath::LinearFunction
   end 
 
-  it 'should return a monomial' do
-    pending
+  it 'should return a QuadraticFunction' do
     @function = SupremeMath::Function.parse('x^2')
-    expect(@function).to be_a SupremeMath::Monomial
+
+    expect(@function).to be_a SupremeMath::QuadraticFunction
   end
 end
 
@@ -41,11 +41,10 @@ describe SupremeMath::Function, 'simplifying a function' do
   end
 
   it 'should combine like terms' do
-    pending
     @polynomial = SupremeMath::Function.parse('x^2 + x^2')
 
     expect(@polynomial.terms.all.count).to eq(1)
-    expect(@polynomial.terms.all.first.coefficient.value).to eq(2)
+    expect(@polynomial.terms.all.coefficient.value).to eq(2)
     expect(@polynomial.terms.all.first.base.value).to eq('x')
     expect(@polynomial.terms.first.exponent.value).to eq(2)
   end
