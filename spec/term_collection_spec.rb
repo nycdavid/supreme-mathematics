@@ -139,4 +139,9 @@ describe SupremeMath::TermCollection, '#simplify' do
   it 'should combine like terms' do
     expect(@term_collection.simplify.count).to eq(2)
   end
+
+  it 'should replace the old terms with the new terms' do
+    @term_collection.simplify
+    expect(@term_collection.all.map { |term| "#{term.coefficient}#{term.base}^#{term.exponent}" }).to include('2x^2')
+  end
 end

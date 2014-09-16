@@ -42,7 +42,7 @@ module SupremeMath
         sum = terms.select { |term| term[:pair] == unique_pair }.map { |term| term[:coefficient] }.reduce(:+)
         new_terms << SupremeMath::Term.parse("#{sum}#{unique_pair}")
       end
-      new_terms
+      @terms = new_terms
     end
 
     def all
