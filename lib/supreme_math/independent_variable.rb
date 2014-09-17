@@ -4,7 +4,8 @@ module SupremeMath
 
     FORMATS = {
       /\A\d+\z/ => 'to_i',
-      /\A\(\d+\/\d+\)\z/ => 'to_r'
+      /\A\(\d+\/\d+\)\z/ => 'to_r',
+      /\A\d+\.\d+\z/ => 'to_f'
     }
     
     def initialize(input)

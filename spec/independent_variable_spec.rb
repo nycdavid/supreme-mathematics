@@ -14,4 +14,11 @@ describe SupremeMath::IndependentVariable, 'initialization' do
     expect(ivar.value).to be_a Rational
     expect(ivar.value).to eq(1/3.to_r)
   end
+
+  it 'should accept and coerce decimals' do
+    ivar = SupremeMath::IndependentVariable.new('1.5')
+
+    expect(ivar.value).to be_a Float
+    expect(ivar.value).to eq(1.5)
+  end
 end
