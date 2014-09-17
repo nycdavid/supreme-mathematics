@@ -32,6 +32,8 @@ module SupremeMath
           (-b + Math.sqrt(b**2 - 4*a*c)) / (2*a), 
           (-b - Math.sqrt(b**2 - 4*a*c)) / (2*a)
         ]
+      rescue Math::DomainError
+        raise Math::DomainError, 'This function has complex roots.'
       end
 
   end

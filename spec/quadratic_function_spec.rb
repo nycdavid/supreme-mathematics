@@ -21,4 +21,10 @@ describe SupremeMath::QuadraticFunction, 'solving for roots' do
   it 'should solve for the roots' do
     expect(@quadratic_function.roots.map { |root| root.round(2) }).to eq([-9.48, 9.67])
   end
+
+  it 'should raise an error for complex roots' do
+    @fn = SupremeMath::Function.parse('x^2 + 3x + 4')
+
+    expect { @fn.roots }.to raise_error Math::DomainError, 'This function has complex roots.'
+  end
 end
