@@ -28,21 +28,30 @@ module SupremeMath
       @input
     end
 
-    def evaluate(independent_var)
-      if independent_var.is_a? String
-        algebraically_evaluate
+    def evaluate(param)
+      param = SupremeMath::IndependentVariable.new(param)
+      if param.value.is_a? String
+        algebraically_evaluate param
       else
-        numerically_evaluate independent_var
+        numerically_evaluate param
       end
     end
 
     def numerically_evaluate(ivar)
       return terms.variables.inject terms.constant.value do |memo, term|
-        memo += term.coefficient * (ivar**term.exponent)
+        memo += term.coefficient * (ivar.value**term.exponent)
       end
     end
 
-    def algebraically_evaluate
+    def algebraically_evaluate(param)
+      new_terms = []
+      param_fn = SupremeMath::Function.parse(param)
+      terms.variables.each do |term|
+        param_fn.terms.variables.each do |param_fn_term|
+          new_terms << "#{term.coefficient * param_fn_term.coefficient}#{term.base}^#{term.exponent}"
+        end
+      end
+      SupremeMath::Function.analyze(new_terms)
     end
 
   end
