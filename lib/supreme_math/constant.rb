@@ -19,6 +19,8 @@ module SupremeMath
       def coerce
         method = FORMATS.select { |k, v| k.match(@input) }.values[0]
         @value = delinted_input.__send__(method)
+      rescue TypeError
+        raise ArgumentError, 'Unable to parse function. Invalid format.'
       end
 
       def delinted_input

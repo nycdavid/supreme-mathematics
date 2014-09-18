@@ -51,3 +51,15 @@ describe SupremeMath::Function, 'abstract/algebraic function evaluation' do
     expect(evaluated_expression).to eq('2x + 4')
   end
 end
+
+describe SupremeMath::Function, 'invalid function formats' do
+  before :all do
+    @invalid_formats = %w(bnu(+) 12+\()
+  end
+
+  it 'should raise an exception for an invalid function format' do
+    @invalid_formats.each do |invalid_format|
+      expect { SupremeMath::Function.parse(invalid_format) }.to raise_error ArgumentError, 'Unable to parse function. Invalid format.'
+    end
+  end
+end

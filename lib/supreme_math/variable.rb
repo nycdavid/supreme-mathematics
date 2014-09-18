@@ -30,6 +30,8 @@ module SupremeMath
       end
       @base = @captures[1]
       @exponent = @captures[2].to_s == '' ? 1 : delint(@captures[2]).__send__(NUMERIC_MAP.select { |k, v| k.match(@captures[2]) }.values[0])
+    rescue TypeError
+      raise ArgumentError, 'Unable to parse function. Invalid format.'
     end
 
     private
