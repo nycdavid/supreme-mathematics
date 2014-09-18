@@ -10,7 +10,11 @@ module SupremeMath
     
     def initialize(input)
       @input = input
-      @value = delint(@input).__send__(FORMATS.select { |k, v| k.match @input }.values[0])
+      if @input.is_a? String
+        @value = delint(@input).__send__(FORMATS.select { |k, v| k.match @input }.values[0])
+      else
+        @value = @input
+      end
     end
 
     private
