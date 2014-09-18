@@ -32,14 +32,22 @@ describe SupremeMath::Function, 'function evaluation with a numeric value' do
     result = @polynomial.evaluate(2)
     expect(result).to eq(11)
   end
+
+  it 'should properly evaluate f(x) with a rational independent var' do
+    expression = SupremeMath::Function.parse('x^2 + 3')
+    result = expression.evaluate('(1/4)')
+
+    expect(result).to eq(49/16.to_r)
+  end
 end
 
 describe SupremeMath::Function, 'abstract/algebraic function evaluation' do
   it 'should insert algebraic expressions in place of x in a function' do
     pending
-    @polynomial = SupremeMath::Polynomial.new('x^2 + 3')
-    result = @polynomial.evaluate('x + 2')
-    expect(result).to be_a SupremeMath::Polynomial
-    expect(result).to eq('(x + 2)^2 + 3')
+    fail
+    expression = SupremeMath::Function.parse('2x')
+    evaluated_expression = expression.evaluate('x + 2')
+  
+    expect(evaluated_expression).to eq('2x + 4')
   end
 end
