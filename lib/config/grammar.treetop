@@ -1,0 +1,16 @@
+require './lib/config/node_extensions'
+
+grammar Numerics
+  rule addition
+    #('+' space? integer / integer) <AdditionExpression>
+    integer space? / '+' space? integer <AdditionExpression>
+  end
+
+  rule integer
+    [0-9]+ <IntegerLiteral>
+  end
+
+  rule space
+    [\s]
+  end
+end
