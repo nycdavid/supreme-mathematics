@@ -4,7 +4,9 @@ require 'pry'
 
 require 'yaml'
 require 'bigdecimal'
+require 'config/initializers/treetop'
 require "supreme_math/calculus"
+require 'supreme_math/algebraic_expansion'
 
 # Classes
 require 'supreme_math/term'
