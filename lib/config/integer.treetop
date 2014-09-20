@@ -1,0 +1,7 @@
+require './lib/config/node_extensions'
+
+grammar Numerics
+  rule integer
+    '-'? [0-9]+ <IntegerLiteral>
+  end
+end
