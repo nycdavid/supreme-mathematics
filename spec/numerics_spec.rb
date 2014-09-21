@@ -62,25 +62,27 @@ describe Numerics, 'expressions' do
     @parser = NumericsParser.new
   end
 
-  it 'should evaluate all integer expressions (2 elements)' do
-    expression = '1 + 2'
-    result = @parser.parse(expression).evaluate
+  describe Numerics, 'integer expressions' do
+    it 'should evaluate all integer expressions (2 elements)' do
+      expression = '1 + 2'
+      result = @parser.parse(expression).evaluate
 
-    expect(result).to eq(3)
-  end
+      expect(result).to eq(3)
+    end
 
-  it 'should evaluate all integer expressions (n elements)' do
-    expression = '1 + 2 + 3'
-    result = @parser.parse(expression).evaluate
+    it 'should evaluate all integer expressions (n elements)' do
+      expression = '1 + 2 + 3'
+      result = @parser.parse(expression).evaluate
 
-    expect(result).to eq(6)
-  end
+      expect(result).to eq(6)
+    end
 
-  it 'should evaluate all integer expression (n + 1 elements)' do
-    expression = '1 + 2 + 3 + 4'
-    result = @parser.parse(expression).evaluate
+    it 'should evaluate all integer expression (n + 1 elements)' do
+      expression = '1 + 2 + 3 + 4'
+      result = @parser.parse(expression).evaluate
 
-    expect(result).to eq(10)
+      expect(result).to eq(10)
+    end
   end
 
   describe Numerics, 'decimal expressions' do
