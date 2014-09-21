@@ -1,18 +1,25 @@
 module Numerics
-  class IntegerLiteral < Treetop::Runtime::SyntaxNode
-    def value
-      text_value.to_i
+  class Treetop::Runtime::SyntaxNode
+    def stripped_text_value 
+      text_value.gsub(/\s+/, '')
     end
   end
 
-  class AdditionExpression < Treetop::Runtime::SyntaxNode
-    def initialize(*args)
-      super
-      elements.delete_if { |element| element.class.name == 'Treetop::Runtime::SyntaxNode' }
+  class IntegerLiteral < Treetop::Runtime::SyntaxNode
+    def value
+      stripped_text_value.to_i
     end
+  end
 
-    def evaluate
-      elements.map { |element| element.value }.inject(:+)
+  class DecimalLiteral < Treetop::Runtime::SyntaxNode
+    def value
+      stripped_text_value.to_f
+    end
+  end
+
+  class RationalLiteral < Treetop::Runtime::SyntaxNode
+    def value
+      stripped_text_value.to_r
     end
   end
 end

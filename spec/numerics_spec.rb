@@ -18,33 +18,25 @@ describe Numerics, 'base data types' do
     expect(result).to be_a Numerics::IntegerLiteral
     expect(result.value).to eq(-9)
   end
-end
-
-describe DecimalNumerics, 'base data types' do
-  before :all do
-    @parser = DecimalNumericsParser.new
-  end
 
   it 'should detect a decimal' do
-    result = @parser.parse('9.9')
+    result = @parser.parse('1.2')
 
-    expect(result).to be_a DecimalNumerics::DecimalLiteral
-    expect(result.value).to eq(9.9)
+    expect(result).to be_a Numerics::DecimalLiteral
+    expect(result.value).to eq(1.2)
   end
 
   it 'should detect a negative decimal' do
-    result = @parser.parse('-99.79')
+    result = @parser.parse('-1.2')
 
-    expect(result).to be_a DecimalNumerics::DecimalLiteral
-    expect(result.value).to eq(-99.79)
+    expect(result).to be_a Numerics::DecimalLiteral
+    expect(result.value).to eq(-1.2)
   end
 
-  it 'should detect an arithmetic expression' do
-    pending
-    fail
-    result = @parser.parse('1.2 + 3.4')
+  it 'should detect a rational without parens' do
+    result = @parser.parse('1/2')
 
-    expect(result).to be_a DecimalNumerics::Expression
-    expect(result.value).to eq(4.6)
+    expect(result).to be_a Numerics::RationalLiteral
+    expect(result.value).to eq(1/2.to_r)
   end
 end

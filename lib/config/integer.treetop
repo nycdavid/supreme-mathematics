@@ -1,7 +1,21 @@
 require './lib/config/node_extensions'
 
 grammar Numerics
+  rule rational
+    [0-9]+ '/' [0-9]+ <RationalLiteral>
+    / decimal
+  end
+
+  rule decimal
+    '-'? [0-9]+ '.' [0-9]+ <DecimalLiteral>
+    / integer 
+  end
+
   rule integer
     '-'? [0-9]+ <IntegerLiteral>
+  end
+
+  rule space
+    [\s]*
   end
 end
