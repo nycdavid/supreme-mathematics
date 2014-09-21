@@ -100,4 +100,20 @@ describe Numerics, 'expressions' do
       expect(result).to eq(7.4)
     end
   end
+
+  describe Numerics, 'rational term expressions' do
+    it 'should evaluate rational term expressions (2 terms)' do
+      expression = '1/4 + 2/4'
+      result = @parser.parse(expression).evaluate
+      
+      expect(result).to eq(3/4.to_r)
+    end
+
+    it 'should evaluate rational term expressions (n terms)' do
+      expression = '1/8 + 1/8 + 1/8 + 2/8'
+      result = @parser.parse(expression).evaluate
+
+      expect(result).to eq(5/8.to_r)
+    end
+  end
 end
