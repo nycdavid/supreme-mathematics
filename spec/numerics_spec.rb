@@ -39,4 +39,25 @@ describe Numerics, 'base data types' do
     expect(result).to be_a Numerics::RationalLiteral
     expect(result.value).to eq(1/2.to_r)
   end
+
+  it 'should detect a negative rational without parens' do
+    result = @parser.parse('-1/2')
+
+    expect(result.value).to eq(-1/2.to_r)
+  end
+
+  it 'should detect a rational with parens' do
+    result = @parser.parse('(1/2)')
+
+    expect(result.value).to eq(1/2.to_r)
+  end
+
+  it 'should detect a negative rational with parens (different types)' do
+    types = %w(-(1/2) (-1/2))
+    types.each do |type|
+      result = @parser.parse(type)
+
+      expect(result.value).to eq(-1/2.to_r)
+    end
+  end
 end
