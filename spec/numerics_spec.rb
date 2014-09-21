@@ -82,4 +82,20 @@ describe Numerics, 'expressions' do
 
     expect(result).to eq(10)
   end
+
+  describe Numerics, 'decimal expressions' do
+    it 'should evaluate decimal expression (2)' do
+      expression = '1.2 + 3.4'
+      result = @parser.parse(expression).evaluate
+
+      expect(result).to eq(4.6)
+    end
+
+    it 'should evaluate decimal expressions (n elements)' do
+      expression = '1.1 + 1.1 + 2.1 + 3.1'
+      result = @parser.parse(expression).evaluate
+
+      expect(result).to eq(7.4)
+    end
+  end
 end

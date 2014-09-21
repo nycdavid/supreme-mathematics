@@ -3,7 +3,6 @@ require './lib/config/node_extensions'
 grammar Numerics
   rule expression
     (rational / decimal / integer / operator / [\s])* <Expression>
-    / rational 
   end
 
   rule rational
@@ -19,6 +18,6 @@ grammar Numerics
   end
 
   rule operator
-    [\s]* '+' [\s]* integer <OperatorLiteral>
+    [\s]* '+' [\s]* <OperatorLiteral>
   end
 end
