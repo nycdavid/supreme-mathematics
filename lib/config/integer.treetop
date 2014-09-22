@@ -2,22 +2,22 @@ require './lib/config/node_extensions'
 
 grammar Numerics
   rule expression
-    (rational / decimal / integer / operator / [\s])* <Expression>
-  end
-
-  rule rational
-    '('? '-'? '('? [1-9]+ '/' [0-9]+ ')'? <RationalLiteral>
-  end
-
-  rule decimal
-    '-'? [0-9]+ '.' [0-9]+ <DecimalLiteral>
-  end
-
-  rule integer
-    '-'? [0-9]+ <IntegerLiteral>
+    operator+ <Expression>
   end
 
   rule operator
-    [\s]* '+' [\s]* <OperatorLiteral>
+    [\s]* (rational / decimal / integer) <OperatorLiteral>
+  end
+
+  rule rational
+    ('+' / '-')? [\s]* '('? '-'? '('? [1-9]+ '/' [0-9]+ ')'? <RationalLiteral>
+  end
+
+  rule decimal
+    ('+' / '-')? [\s]* [0-9]+ '.' [0-9]+ <DecimalLiteral>
+  end
+
+  rule integer
+    ('+' / '-')? [\s]* [0-9]+ <IntegerLiteral>
   end
 end

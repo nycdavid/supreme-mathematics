@@ -83,6 +83,13 @@ describe Numerics, 'expressions' do
 
       expect(result).to eq(10)
     end
+
+    it 'should handle subtractions of integers' do
+      expression = '5 - 1 - 3'
+      result = @parser.parse(expression).evaluate
+
+      expect(result).to eq(1)
+    end
   end
 
   describe Numerics, 'decimal expressions' do
