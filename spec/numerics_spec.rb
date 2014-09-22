@@ -106,6 +106,13 @@ describe Numerics, 'expressions' do
 
       expect(result).to eq(7.4)
     end
+
+    it 'should evaluate decimal subtraction' do
+      expression = '5.0 - 1.2 - 1.3 - 1.4'
+      result = @parser.parse(expression).evaluate
+
+      expect(result).to eq(1.1)
+    end
   end
 
   describe Numerics, 'rational term expressions' do
