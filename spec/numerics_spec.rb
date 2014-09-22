@@ -138,3 +138,35 @@ describe Numerics, 'expressions' do
     end
   end
 end
+
+describe Numerics, 'arithmetic of mixed numeric types' do
+  before :all do
+    @parser = NumericsParser.new
+  end
+
+  it 'should add/subtract an integer and decimal' do
+    op1 = '1 + 1.5'
+    op2 = '1.1 - 1'
+    res1 = @parser.parse(op1).evaluate
+    res2 = @parser.parse(op2).evaluate
+
+    expect(res1).to eq(2.5)
+    expect(res2).to eq(1.1 - 1)
+  end
+
+  it 'should add/subtract a decimal and a rational' do
+    op1 = '0.1 + 1/10'
+    op2 = '0.5 - 1/10'
+
+    expect(@parser.parse(op1).evaluate).to eq(0.2)
+    expect(@parser.parse(op2).evaluate).to eq(0.4)
+  end
+
+  it 'should add/subtract an integer and a rational' do
+    op1 = '1 + 1/10'
+    op2 = '1 - 1/10'
+
+    expect(@parser.parse(op1).evaluate).to eq(11/10.to_r)
+    expect(@parser.parse(op2).evaluate).to eq(9/10.to_r)
+  end
+end
