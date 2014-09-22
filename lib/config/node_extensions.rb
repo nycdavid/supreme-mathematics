@@ -10,7 +10,7 @@ module Numerics
 
   class OperatorLiteral < Constant
     def value
-      stripped_text_value.to_i
+      elements.find { |element| element.is_a? Numerics::Constant }.value
     end
   end
 
