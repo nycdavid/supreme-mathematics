@@ -40,21 +40,6 @@ describe SupremeMath::LinearFunction, 'table test of different forms of linear f
   end
 end
 
-describe SupremeMath::LinearFunction, 'slope and intercept' do
-  before :each do
-    @input_string = '3x + 4'
-    @linear_function = SupremeMath::Function.parse(@input_string)
-  end
-
-  it 'should properly identify the slope' do
-    expect(@linear_function.slope).to eq(3)
-  end
-
-  it 'should properly indentify the y-intercept' do
-    expect(@linear_function.y_intercept).to eq(4)
-  end
-end
-
 describe SupremeMath::LinearFunction, 'slope and intercept with decimal values' do
   before :each do
     @input_string = '3.45x + 2.79'
