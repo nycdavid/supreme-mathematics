@@ -1,5 +1,5 @@
 require './lib/config/node_extensions'
-require './lib/config/grammars/integer'
+require './lib/config/grammars/numerics'
 require './lib/config/grammars/polynomial'
 
 grammar Function
