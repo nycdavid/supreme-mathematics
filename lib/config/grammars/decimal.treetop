@@ -2,7 +2,7 @@ require './lib/config/node_extensions'
 
 grammar DecimalNumerics
   rule expression
-    decimal / ('-' / '+') space decimal <Expression>
+    decimal space ('+' / '-') space decimal <Expression>
   end
 
   rule decimal

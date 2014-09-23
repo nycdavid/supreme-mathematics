@@ -1,4 +1,5 @@
 require 'treetop'
 
-Treetop.load './lib/config/integer.treetop'
-Treetop.load './lib/config/decimal.treetop'
+Dir.glob('./lib/config/grammars/*.treetop').each do |grammar_file|
+  Treetop.load grammar_file
+end

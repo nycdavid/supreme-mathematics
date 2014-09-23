@@ -1,0 +1,18 @@
+require './lib/config/node_extensions'
+require './lib/config/grammars/integer'
+
+grammar Polynomial
+  include Numerics
+
+  rule linear_function
+    monomial operator <LinearFunction> / monomial <LinearFunction>
+  end
+
+  rule monomial
+    (integer / rational / decimal) variable
+  end
+
+  rule variable
+    [a-z]
+  end
+end
