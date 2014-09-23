@@ -43,6 +43,15 @@ end
 
 module Polynomial
   class LinearFunction < Treetop::Runtime::SyntaxNode
+  end
 
+  class Slope < Treetop::Runtime::SyntaxNode
+    def value
+      elements.find { |element| element.is_a? Numerics::Constant }
+              .value
+    end
+  end
+
+  class Variable < Treetop::Runtime::SyntaxNode
   end
 end

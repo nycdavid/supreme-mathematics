@@ -5,14 +5,18 @@ grammar Polynomial
   include Numerics
 
   rule linear_function
-    monomial operator <LinearFunction> / monomial <LinearFunction>
+    slope variable y_intercept <LinearFunction> / slope variable <LinearFunction>
   end
 
-  rule monomial
-    (integer / rational / decimal) variable
+  rule slope
+    integer / rational / decimal
+  end
+
+  rule y_intercept
+    operator
   end
 
   rule variable
-    [a-z]
+    [a-z] <Variable>
   end
 end

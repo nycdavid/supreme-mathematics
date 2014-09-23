@@ -3,13 +3,20 @@ require 'spec_helper'
 describe Polynomial::LinearFunction, 'parser' do
   before :all do
     @parser = PolynomialParser.new
+    @expression = '2x + 1'
+    @result = @parser.parse(@expression)
   end
 
   it 'should return an instance of Polynomial::LinearFunction' do
-    expression = '2x + 1'
-    result = @parser.parse(expression)
-
-    expect(result).to be_a Polynomial::LinearFunction
+    expect(@result).to be_a Polynomial::LinearFunction
+  end
+  
+  it 'should respond to #slope' do
+    expect(@result.slope.value).to eq(2)
+  end
+  
+  it 'should respond to #y_intercept' do
+    expect(@result.y_intercept.value).to eq(1)
   end
 end
 
