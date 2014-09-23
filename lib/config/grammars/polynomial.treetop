@@ -9,7 +9,7 @@ grammar Polynomial
   end
 
   rule slope
-    integer / rational / decimal
+    rational / decimal / integer
   end
 
   rule y_intercept
