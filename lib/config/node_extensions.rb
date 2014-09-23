@@ -40,3 +40,9 @@ module Numerics
     end
   end
 end
+
+module Polynomial
+  class LinearFunction < Treetop::Runtime::SyntaxNode
+
+  end
+end
