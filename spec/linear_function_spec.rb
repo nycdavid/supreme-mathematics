@@ -1,5 +1,18 @@
 require 'spec_helper'
 
+describe Polynomial::LinearFunction, 'parser' do
+  before :all do
+    @parser = PolynomialParser.new
+  end
+
+  it 'should return an instance of Polynomial::LinearFunction' do
+    expression = '2x + 1'
+    result = @parser.parse(expression)
+
+    expect(result).to be_a Polynomial::LinearFunction
+  end
+end
+
 describe SupremeMath::LinearFunction, 'table test of different forms of linear functions' do
   it 'should return a LinearFunction instance for each' do
     equations = ['(3/4)x + (3/4)', '(3/4)x + 3', '(3/4)x + 3.33', '(3/4)x - (3/4)', '(3/4)x - 3', '(3/4)x - 3.33', '3x + (3/4)',
