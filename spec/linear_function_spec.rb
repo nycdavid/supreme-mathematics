@@ -21,6 +21,10 @@ describe Polynomial::LinearFunction, 'parser' do
 end
 
 describe SupremeMath::LinearFunction, 'table test of different forms of linear functions' do
+  before :all do
+    @parser = PolynomialParser.new
+  end
+
   it 'should return a LinearFunction instance for each' do
     equations = ['(3/4)x + (3/4)', '(3/4)x + 3', '(3/4)x + 3.33', '(3/4)x - (3/4)', '(3/4)x - 3', '(3/4)x - 3.33', '3x + (3/4)',
      '3x + 3', '3x + 3.33', '3x - (3/4)', '3x - 3', '3x - 3.33', '3.33x + (3/4)', '3.33x + 3', '3.33x + 3.33',
@@ -29,9 +33,9 @@ describe SupremeMath::LinearFunction, 'table test of different forms of linear f
      '-3.33x - 3', '-3.33x - 3.33']
     
     equations.each do |equation|
-      @linear_function = SupremeMath::Function.parse(equation)
+      linear_function = @parser.parse(equation)
 
-      expect(@linear_function).to be_a SupremeMath::LinearFunction
+      expect(linear_function).to be_a Polynomial::LinearFunction
     end
   end
 end
