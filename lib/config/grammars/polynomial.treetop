@@ -1,5 +1,4 @@
 require './lib/config/node_extensions'
-require './lib/config/grammars/integer'
 
 grammar Polynomial
   include Numerics
