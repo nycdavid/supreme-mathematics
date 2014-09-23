@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Polynomial::LinearFunction, 'parser' do
   before :all do
-    @parser = PolynomialParser.new
+    @parser = FunctionParser.new
     @expression = '2x + 1'
     @result = @parser.parse(@expression)
   end
@@ -22,7 +22,7 @@ end
 
 describe SupremeMath::LinearFunction, 'table test of different forms of linear functions' do
   before :all do
-    @parser = PolynomialParser.new
+    @parser = FunctionParser.new
   end
 
   it 'should return a LinearFunction instance for each' do
