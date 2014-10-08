@@ -5,7 +5,7 @@ describe FunctionParser, 'arithmetic' do
     @parser = FunctionParser.new
   end
 
-  describe 'String input' do
+  describe 'Integers' do
     it 'should add numbers together' do
       exp = @parser.parse('2 + 3 + 4') 
 
@@ -25,5 +25,11 @@ describe FunctionParser, 'arithmetic' do
 
       expect(exp.evaluate).to eq(5)
     end
+  end
+
+  describe 'Rationals' do
+  end
+
+  describe 'Decimals' do
   end
 end

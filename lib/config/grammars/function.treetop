@@ -5,7 +5,7 @@ grammar Function
   include PolynomialElements
 
   rule expression
-    operator+ <Expression>
+    operand+ <Expression>
   end
 
   rule operator
