@@ -1,14 +1,6 @@
 require './lib/config/node_extensions'
 
 grammar Numerics
-  rule expression
-    operator+ <Expression>
-  end
-
-  rule operator
-    [\s]* (rational / decimal / integer) <OperatorLiteral>
-  end
-
   rule rational
     ('+' / '-')? [\s]* '('? '-'? '('? [1-9]+ '/' [0-9]+ ')'? <RationalLiteral>
   end

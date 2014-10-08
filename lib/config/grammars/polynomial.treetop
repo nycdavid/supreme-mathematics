@@ -1,8 +1,6 @@
 require './lib/config/node_extensions'
 
-grammar Polynomial
-  include Numerics
-
+grammar PolynomialElements
   rule linear_function
     slope variable y_intercept <LinearFunction> / slope variable <LinearFunction>
   end
@@ -13,9 +11,5 @@ grammar Polynomial
 
   rule y_intercept
     operator
-  end
-
-  rule variable
-    [a-z] <Variable>
   end
 end

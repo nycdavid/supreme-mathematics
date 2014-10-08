@@ -1,8 +1,18 @@
 require './lib/config/node_extensions'
-require './lib/config/grammars/numerics'
-require './lib/config/grammars/polynomial'
 
 grammar Function
   include Numerics
-  include Polynomial
+  include PolynomialElements
+
+  rule expression
+    operator+ <Expression>
+  end
+
+  rule operator
+    [\s]* (rational / decimal / integer) <OperatorLiteral>
+  end
+  
+  rule variable
+    [a-z] <Variable>
+  end
 end
