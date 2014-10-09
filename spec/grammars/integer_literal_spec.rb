@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Numerics::IntegerLiteral, '#value' do
-  before :each do
+  before :all do
     @numerics_parser = NumericsParser.new
   end
 
