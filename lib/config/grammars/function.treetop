@@ -8,7 +8,7 @@ grammar Function
     operand+ <Expression>
   end
 
-  rule operator
+  rule operand
     [\s]* (rational / decimal / integer) <OperatorLiteral>
   end
   
