@@ -19,5 +19,7 @@ describe Numerics::IntegerLiteral, '#value' do
 
   it 'should handle the single digit case (positively signed with white space)' do
     numeric = @numerics_parser.parse('+ 3')
+
+    expect(numeric.value).to eq(3)
   end
 end
