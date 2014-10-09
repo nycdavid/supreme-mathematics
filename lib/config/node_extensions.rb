@@ -14,34 +14,19 @@ module Numerics
     end
   end
 
-  class IntegerLiteral < Constant
-    def value
-      stripped_text_value.to_i
-    end
-  end
-
-  class DecimalLiteral < Constant
-    def value
-      stripped_text_value.to_f
-    end
-  end
-
   class RationalLiteral < Constant
     def value
       stripped_text_value.to_r
     end
   end
 
-  class Expression < Treetop::Runtime::SyntaxNode
-    def evaluate
-      elements.select { |element| element.is_a? Numerics::Constant }
-              .map { |element| element.value }
-              .inject(:+)
-    end
-  end
+  
 end
 
-module Polynomial
+module Function
+  class Expression < Treetop::Runtime::SyntaxNode
+  end
+
   class LinearFunction < Treetop::Runtime::SyntaxNode
   end
 
