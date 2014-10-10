@@ -22,4 +22,10 @@ describe Numerics::DecimalLiteral, '#value' do
 
     expect(numeric.value).to eq(1.5)
   end
+
+  it 'should handle n amount of digits' do
+    numeric = @numerics_parser.parse('111.567')
+
+    expect(numeric.value).to eq(111.567)
+  end
 end

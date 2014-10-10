@@ -1,35 +1,20 @@
 require 'spec_helper'
 
-describe FunctionParser, 'arithmetic' do
+describe FunctionParser, 'constants' do
   before :each do
     @parser = FunctionParser.new
   end
 
-  describe 'Integers' do
-    it 'should add numbers together' do
-      exp = @parser.parse('2 + 3 + 4') 
+  it 'should handle single digit inputs' do
+    exp = @parser.parse('5')
 
-      expect(exp.evaluate).to eq(9)
-    end
-
-    it 'should subtract numbers' do
-      exp = @parser.parse('10 - 8 - 1')
-
-      expect(exp.evaluate).to eq(1)
-    end
-
-    it 'should divide numbers' do
-      pending
-      fail
-      exp = @parser.parse('10 / 2')
-
-      expect(exp.evaluate).to eq(5)
-    end
+    expect(exp.evaluate).to eq(5)
   end
 
-  describe 'Rationals' do
+  it 'should handle the addition of two digits' do
+    exp = @parser.parse('2 + 2')
+
+    expect(exp.evaluate).to eq(4)
   end
 
-  describe 'Decimals' do
-  end
 end

@@ -22,4 +22,10 @@ describe Numerics::IntegerLiteral, '#value' do
 
     expect(numeric.value).to eq(3)
   end
+
+  it 'should n amount of digits' do
+    numeric = @numerics_parser.parse('33333')
+
+    expect(numeric.value).to eq(33333)
+  end
 end
