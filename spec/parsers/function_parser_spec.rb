@@ -17,4 +17,16 @@ describe FunctionParser, 'constants' do
     expect(exp.evaluate).to eq(4)
   end
 
+  it 'should handle the addition of n digits (with whitespace)' do
+    exp = @parser.parse('2 + 2 + 2 + 2')
+
+    expect(exp.evaluate).to eq(8)
+  end
+
+  it 'should handle the addition of n digits (without whitespace)' do
+    exp = @parser.parse('2+2+2+2')
+
+    expect(exp.evaluate).to eq(8)
+  end
+
 end
