@@ -1,4 +1,5 @@
 require './lib/config/node_extensions'
+require './lib/supreme_math/function'
 
 grammar Function
   include Numerics
@@ -9,7 +10,7 @@ grammar Function
   end
 
   rule operand
-    [\s]* (rational / decimal / integer) <OperatorLiteral>
+    rational / decimal / integer
   end
   
   rule variable

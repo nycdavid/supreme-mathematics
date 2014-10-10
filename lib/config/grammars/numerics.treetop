@@ -12,6 +12,6 @@ grammar Numerics
   end
 
   rule integer
-    ('+' / '-')? [\s]* [0-9]+ <IntegerLiteral>
+    [\s]* ('+' / '-')? [\s]* [0-9]+ <IntegerLiteral>
   end
 end
