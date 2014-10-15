@@ -10,7 +10,7 @@ grammar Function
   end
 
   rule operand
-    rational / decimal / integer
+    constant variable?
   end
   
   rule variable
